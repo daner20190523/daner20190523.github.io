@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>瓦尔登湖 - 小红书读书卡片</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { margin: 0; background: #000; }
+  .card-stack { width: 1080px; }
+  .card {
+    width: 1080px;
+    height: 1440px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    margin: 0;
+  }
+  .card-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px; height: 1440px;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px; height: 1440px;
+    z-index: 1;
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+  }
+  .label {
+    font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0.7;
+  }
+  .title {
+    font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+  .subtitle {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.8;
+    opacity: 0.85;
+  }
+  .quote {
+    font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 2px;
+  }
+  .body-text {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 2;
+    opacity: 0.9;
+  }
+  .small-text {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.8;
+    opacity: 0.7;
+  }
+  .accent { color: #c49a6c; }
+  .cream { color: #f5efe4; }
+  .white { color: #ffffff; }
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: #c49a6c;
+    margin: 32px 0;
+  }
+  .byline {
+    position: absolute;
+    left: 80px;
+    bottom: 80px;
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 22px;
+    color: #c49a6c;
+    opacity: 0.8;
+    z-index: 3;
+  }
+  .card-num {
+    position: absolute;
+    right: 80px;
+    bottom: 80px;
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 20px;
+    opacity: 0.4;
+    z-index: 3;
+  }
+  /* Card 1: AI background */
+  #card1 .overlay {
+    background: linear-gradient(180deg, rgba(26,42,58,0.3) 0%, rgba(26,42,58,0.7) 100%);
+  }
+  #card1 .content { max-width: 850px; }
+  /* Card 2: warm bg */
+  #card2 { background: #2a2218; }
+  /* Card 3: mid bg */
+  #card3 { background: #1f3028; }
+  /* Card 4: dark bg */
+  #card4 { background: #1a2a3a; }
+  /* Card 5: gradient bg */
+  #card5 {
+    background: linear-gradient(180deg, #2a2218 0%, #1f3028 100%);
+  }
+  .list-item {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 2.2;
+    opacity: 0.9;
+  }
+  .book-rec {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+  .book-title {
+    font-weight: 700;
+    color: #c49a6c;
+    font-size: 32px;
+  }
+  .interact {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 40px;
+  }
+  .original-quote {
+    font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.8;
+    padding: 40px;
+    border-left: 3px solid #c49a6c;
+    margin-bottom: 48px;
+    opacity: 0.95;
+  }
+  .translation {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.6;
+    color: #c49a6c;
+  }
+  .pain-point {
+    font-family: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+  .zinger {
+    font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-top: 48px;
+    color: #c49a6c;
+  }
+</style>
+</head>
+<body>
+<div class="card-stack">
+
+  <!-- Card 1: 封面钩子卡 -->
+  <div class="card" id="card1">
+    <img class="card-bg" src="bg_unified.png" alt="">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="label cream">-- 智韵阁</div>
+      <div class="title cream">读完《瓦尔登湖》才知道</div>
+      <div class="subtitle cream">原来人还可以这样生活</div>
+      <div class="divider"></div>
+      <div class="quote cream">原来人<br>还可以<br>这样生活</div>
+      <div class="subtitle cream" style="margin-top: 60px; font-size: 26px; opacity: 0.6;">瓦尔登湖 · 梭罗</div>
+    </div>
+    <div class="byline">-- 智韵阁</div>
+    <div class="card-num cream">01/05</div>
+  </div>
+
+  <!-- Card 2: 痛点共鸣卡 -->
+  <div class="card" id="card2">
+    <div class="content cream">
+      <div class="label accent">共鸣 · 你是不是也</div>
+      <div class="pain-point cream">没有喧嚣的人海，没有拥挤的车流</div>
+      <div class="pain-point cream">没有金钱欲望驱使的疲惫</div>
+      <div class="pain-point cream">只有日出而作，日落而息的宁静</div>
+      <div class="divider"></div>
+      <div class="subtitle cream">说白了，在快节奏的城市里</div>
+      <div class="subtitle cream">我们需要偶尔从漩涡里探出头来</div>
+      <div class="subtitle cream">喘一口气</div>
+    </div>
+    <div class="card-num cream">02/05</div>
+  </div>
+
+  <!-- Card 3: 金句翻译卡 -->
+  <div class="card" id="card3">
+    <div class="content cream">
+      <div class="label accent">原文 · 梭罗</div>
+      <div class="original-quote cream">"一个人怎么看待自己<br>往往暗示着自己的命运。"</div>
+      <div style="text-align: center; margin: 20px 0; font-size: 48px; opacity: 0.5;">↓</div>
+      <div class="translation">你对自己怎么看<br>命运就怎么走</div>
+    </div>
+    <div class="card-num cream">03/05</div>
+  </div>
+
+  <!-- Card 4: 争议观点卡 -->
+  <div class="card" id="card4">
+    <div class="content cream">
+      <div class="label accent">争议 · 我的观点</div>
+      <div class="title cream" style="font-size: 52px; margin-bottom: 32px;">这本书不是在讲隐居</div>
+      <div class="subtitle cream" style="font-size: 36px; margin-bottom: 48px;">它真正想说的是：</div>
+      <div class="quote cream" style="font-size: 56px;">在漩涡里<br>也不丢自己</div>
+      <div class="divider"></div>
+      <div class="body-text cream" style="font-size: 30px; opacity: 0.7; margin-bottom: 32px;">"我怎会觉得寂寞？<br>无论两条腿怎样努力<br>也不能使两颗心灵更接近。"</div>
+      <div class="interact cream">同意吗？🤔</div>
+    </div>
+    <div class="byline">-- 智韵阁</div>
+    <div class="card-num cream">04/05</div>
+  </div>
+
+  <!-- Card 5: 利他延伸卡 -->
+  <div class="card" id="card5">
+    <div class="content cream">
+      <div class="label accent">延伸 · 如果喜欢这本</div>
+      <div class="title cream" style="font-size: 52px; margin-bottom: 48px;">这3本你也会爱上</div>
+      <div class="book-rec cream">
+        <span class="book-title">《庄子》</span> · 中国古典里的瓦尔登湖，更早讲独处与自由
+      </div>
+      <div class="book-rec cream">
+        <span class="book-title">《一个人的村庄》</span> · 刘亮程，乡土中国的独处哲学
+      </div>
+      <div class="book-rec cream">
+        <span class="book-title">《心的事情》</span> · 庆山，女性视角的内心独白
+      </div>
+      <div class="divider"></div>
+      <div class="interact cream">你读过哪本？🙋</div>
+    </div>
+    <div class="byline">-- 智韵阁</div>
+    <div class="card-num cream">05/05</div>
+  </div>
+
+</div>
+</body>
+</html>
