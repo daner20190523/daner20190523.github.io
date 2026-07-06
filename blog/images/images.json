@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "id": "aqs",
+      "title": "魔法世界",
+      "tag": "群魔乱舞",
+      "images": [
+        { "file": "7486868024386976946.png", "label": "蓝色的眼泪" },
+        { "file": "ai-prompt_01.png", "label": "兔子" },
+        { "file": "style_05.png", "label": "女儿的手稿二次加工" },
+        { "file": "7494455212965098577.png", "label": "可爱的牛" },
+        { "file": "7494460152177489688.png", "label": "马" },
+        { "file": "7502335520174893037.png", "label": "玲珑剔透" },
+        { "file": "7486854976276870144.png", "label": "修行" },
+        { "file": "ai-prompt_04.png", "label": "小人物" },
+        { "file": "7488164447380700945.png", "label": "极简" }
+      ]
+    }
+  ]
+}
