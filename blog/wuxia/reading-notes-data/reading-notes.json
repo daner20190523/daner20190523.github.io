@@ -1,0 +1,635 @@
+{
+  "updated": "2026-07-07",
+  "notes": [
+    {
+      "year": "2024",
+      "title": "碎笔 · 春逝梨花",
+      "file": "reading-notes-data/notes/2024/2024-07-碎笔-·-春逝梨花.txt",
+      "tag": "碎笔"
+    },
+    {
+      "year": "2024",
+      "title": "《改变你想法的101篇文章》",
+      "file": "reading-notes-data/notes/2024/2024-06-《改变你想法的101篇文章》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2024",
+      "title": "《往里走安顿自己》",
+      "file": "reading-notes-data/notes/2024/2024-04-《往里走安顿自己》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2024",
+      "title": "《额尔古纳河右岸》",
+      "file": "reading-notes-data/notes/2024/2024-03-《额尔古纳河右岸》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2024",
+      "title": "《明亮的夜晚》",
+      "file": "reading-notes-data/notes/2024/2024-02-《明亮的夜晚》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2024",
+      "title": "《梁永安：爱情这门课，你可别挂科》",
+      "file": "reading-notes-data/notes/2024/2024-01-《梁永安：爱情这门课，你可别挂科》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《思维导图笔记整理术》",
+      "file": "reading-notes-data/notes/2023/2023-57-《思维导图笔记整理术》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《大问题》",
+      "file": "reading-notes-data/notes/2023/2023-56-《大问题》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《北漂往事》",
+      "file": "reading-notes-data/notes/2023/2023-55-《北漂往事》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《人世间》",
+      "file": "reading-notes-data/notes/2023/2023-54-《人世间》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《冯唐成事心法》",
+      "file": "reading-notes-data/notes/2023/2023-52-《冯唐成事心法》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《正念的奇迹》",
+      "file": "reading-notes-data/notes/2023/2023-51-《正念的奇迹》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《穷人》",
+      "file": "reading-notes-data/notes/2023/2023-50-《穷人》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《窄门》",
+      "file": "reading-notes-data/notes/2023/2023-49-《窄门》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《总结》来吧，朋友，咱俩聊聊。",
+      "file": "reading-notes-data/notes/2023/2023-48-《总结》来吧，朋友，咱俩聊聊。.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《背德者》",
+      "file": "reading-notes-data/notes/2023/2023-46-《背德者》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "如何让你爱的人爱上你",
+      "file": "reading-notes-data/notes/2023/2023-45-如何让你爱的人爱上你.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "文学回忆录",
+      "file": "reading-notes-data/notes/2023/2023-44-文学回忆录.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "不能承受生命之轻",
+      "file": "reading-notes-data/notes/2023/2023-43-不能承受生命之轻.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "帕洛马尔",
+      "file": "reading-notes-data/notes/2023/2023-42-帕洛马尔.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "我的情绪为何总被他人左右",
+      "file": "reading-notes-data/notes/2023/2023-41-我的情绪为何总被他人左右.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "人生没什么不可放下：弘一法师的人生智慧",
+      "file": "reading-notes-data/notes/2023/2023-40-人生没什么不可放下：弘一法师的人生智慧.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "冬牧场",
+      "file": "reading-notes-data/notes/2023/2023-39-冬牧场.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "有效学习、7部打造个人知识管理闭环",
+      "file": "reading-notes-data/notes/2023/2023-38-有效学习、7部打造个人知识管理闭环.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《我在北京送快递》",
+      "file": "reading-notes-data/notes/2023/2023-37-《我在北京送快递》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "啊哈，果然这本书能静心",
+      "file": "reading-notes-data/notes/2023/2023-36-啊哈，果然这本书能静心.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "别在最好的年纪，辜负最好的自己",
+      "file": "reading-notes-data/notes/2023/2023-35-别在最好的年纪，辜负最好的自己.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "文案创作完全手册",
+      "file": "reading-notes-data/notes/2023/2023-34-文案创作完全手册.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "尖叫感",
+      "file": "reading-notes-data/notes/2023/2023-33-尖叫感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "哼！看完了认知变现也没钱",
+      "file": "reading-notes-data/notes/2023/2023-32-哼！看完了认知变现也没钱.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "我们时代的神经症人格",
+      "file": "reading-notes-data/notes/2023/2023-31-我们时代的神经症人格.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "沧浪之水",
+      "file": "reading-notes-data/notes/2023/2023-30-沧浪之水.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "朝抵抗力最大的路径走",
+      "file": "reading-notes-data/notes/2023/2023-29-朝抵抗力最大的路径走.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "梦里花落知多少",
+      "file": "reading-notes-data/notes/2023/2023-28-梦里花落知多少.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "羊脂球讲了一个什么故事？",
+      "file": "reading-notes-data/notes/2023/2023-27-羊脂球讲了一个什么故事？.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "生死场",
+      "file": "reading-notes-data/notes/2023/2023-26-生死场.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "灿烂千阳",
+      "file": "reading-notes-data/notes/2023/2023-25-灿烂千阳.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "山月记",
+      "file": "reading-notes-data/notes/2023/2023-24-山月记.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "你当像鸟飞往你的山",
+      "file": "reading-notes-data/notes/2023/2023-23-你当像鸟飞往你的山.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "我与地坛",
+      "file": "reading-notes-data/notes/2023/2023-22-我与地坛.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "窗外飞过一只鸟",
+      "file": "reading-notes-data/notes/2023/2023-21-窗外飞过一只鸟.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "我的阿勒泰",
+      "file": "reading-notes-data/notes/2023/2023-20-我的阿勒泰.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "我本芬芳",
+      "file": "reading-notes-data/notes/2023/2023-19-我本芬芳.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "秋园",
+      "file": "reading-notes-data/notes/2023/2023-18-秋园.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "安德鲁不想孤独终老",
+      "file": "reading-notes-data/notes/2023/2023-17-安德鲁不想孤独终老.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "男人这东西",
+      "file": "reading-notes-data/notes/2023/2023-16-男人这东西.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "卡拉马佐夫兄弟",
+      "file": "reading-notes-data/notes/2023/2023-15-卡拉马佐夫兄弟.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "阿莱夫",
+      "file": "reading-notes-data/notes/2023/2023-14-阿莱夫.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "了凡四训讲什么？",
+      "file": "reading-notes-data/notes/2023/2023-13-了凡四训讲什么？.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "38妇女节我在看《国富论》",
+      "file": "reading-notes-data/notes/2023/2023-12-38妇女节我在看《国富论》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《荒原狼》",
+      "file": "reading-notes-data/notes/2023/2023-11-《荒原狼》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《人生不过如此而已》",
+      "file": "reading-notes-data/notes/2023/2023-10-《人生不过如此而已》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "《闲暇处才是生活》",
+      "file": "reading-notes-data/notes/2023/2023-09-《闲暇处才是生活》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "我生在1994，我是不是老了",
+      "file": "reading-notes-data/notes/2023/2023-08-我生在1994，我是不是老了.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "面纱",
+      "file": "reading-notes-data/notes/2023/2023-07-面纱.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "梁实秋 · 会说话的人，人生都不会太差",
+      "file": "reading-notes-data/notes/2023/2023-06-梁实秋-·-会说话的人，人生都不会太差.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "安娜卡列尼娜",
+      "file": "reading-notes-data/notes/2023/2023-05-安娜卡列尼娜.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "爱，金钱和孩子",
+      "file": "reading-notes-data/notes/2023/2023-04-爱，金钱和孩子.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "追风筝的人",
+      "file": "reading-notes-data/notes/2023/2023-03-追风筝的人.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "挪威的森林",
+      "file": "reading-notes-data/notes/2023/2023-02-挪威的森林.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2023",
+      "title": "瓦尔登湖",
+      "file": "reading-notes-data/notes/2023/2023-01-瓦尔登湖.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "我的职业是小说家",
+      "file": "reading-notes-data/notes/2022/2022-42-我的职业是小说家.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "在远远的背后带领",
+      "file": "reading-notes-data/notes/2022/2022-41-在远远的背后带领.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "古都",
+      "file": "reading-notes-data/notes/2022/2022-40-古都.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "罪与罚",
+      "file": "reading-notes-data/notes/2022/2022-39-罪与罚.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《你的夏天还好吗》",
+      "file": "reading-notes-data/notes/2022/2022-38-《你的夏天还好吗》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "体验文字的美——你是人间四月天",
+      "file": "reading-notes-data/notes/2022/2022-37-体验文字的美——你是人间四月天.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《双城记》",
+      "file": "reading-notes-data/notes/2022/2022-36-《双城记》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "牛虻——沉浸式阅读让人忘却一切",
+      "file": "reading-notes-data/notes/2022/2022-35-牛虻——沉浸式阅读让人忘却一切.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "世界简史",
+      "file": "reading-notes-data/notes/2022/2022-34-世界简史.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "悉达多",
+      "file": "reading-notes-data/notes/2022/2022-33-悉达多.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "不忠的女人 | 没看出来哪里不忠",
+      "file": "reading-notes-data/notes/2022/2022-32-不忠的女人-没看出来哪里不忠.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "理想的婚姻，生活的智慧",
+      "file": "reading-notes-data/notes/2022/2022-31-理想的婚姻，生活的智慧.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "再次打开《杨绛传》",
+      "file": "reading-notes-data/notes/2022/2022-30-再次打开《杨绛传》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "打开一颗心",
+      "file": "reading-notes-data/notes/2022/2022-29-打开一颗心.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "堕落",
+      "file": "reading-notes-data/notes/2022/2022-28-堕落.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "鼠疫",
+      "file": "reading-notes-data/notes/2022/2022-27-鼠疫.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "读书感悟",
+      "file": "reading-notes-data/notes/2022/2022-26-读书感悟.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "财务自由之路",
+      "file": "reading-notes-data/notes/2022/2022-25-财务自由之路.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《斯通纳》| 我看到了你的影子",
+      "file": "reading-notes-data/notes/2022/2022-24-《斯通纳》-我看到了你的影子.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "读巴菲特给儿女的一生忠告有感",
+      "file": "reading-notes-data/notes/2022/2022-23-读巴菲特给儿女的一生忠告有感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "稻盛和夫给年轻人的忠告有感",
+      "file": "reading-notes-data/notes/2022/2022-22-稻盛和夫给年轻人的忠告有感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "论沟通的艺术",
+      "file": "reading-notes-data/notes/2022/2022-21-论沟通的艺术.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "脱口秀观后感",
+      "file": "reading-notes-data/notes/2022/2022-20-脱口秀观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "朗读者观后感",
+      "file": "reading-notes-data/notes/2022/2022-19-朗读者观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "朗读者观后感",
+      "file": "reading-notes-data/notes/2022/2022-18-朗读者观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《红与黑》的矛盾和纠结",
+      "file": "reading-notes-data/notes/2022/2022-17-《红与黑》的矛盾和纠结.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "阶段性读书总结",
+      "file": "reading-notes-data/notes/2022/2022-16-阶段性读书总结.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《人生第一次》观后感",
+      "file": "reading-notes-data/notes/2022/2022-15-《人生第一次》观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《人生第一次》观后感",
+      "file": "reading-notes-data/notes/2022/2022-14-《人生第一次》观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《人生第一次》观后感",
+      "file": "reading-notes-data/notes/2022/2022-13-《人生第一次》观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《一句顶万句》的孤独",
+      "file": "reading-notes-data/notes/2022/2022-12-《一句顶万句》的孤独.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "智慧如何学？",
+      "file": "reading-notes-data/notes/2022/2022-11-智慧如何学？.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "人生只有一件事读后感",
+      "file": "reading-notes-data/notes/2022/2022-10-人生只有一件事读后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "看完了《人间告白》",
+      "file": "reading-notes-data/notes/2022/2022-09-看完了《人间告白》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《亲爱的生命》观后感",
+      "file": "reading-notes-data/notes/2022/2022-08-《亲爱的生命》观后感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《如何阅读一本书》",
+      "file": "reading-notes-data/notes/2022/2022-07-《如何阅读一本书》.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "从《暗时间》中学会抓住不变量",
+      "file": "reading-notes-data/notes/2022/2022-06-从《暗时间》中学会抓住不变量.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "从《文城》体验带有强烈的画面感的文字",
+      "file": "reading-notes-data/notes/2022/2022-05-从《文城》体验带有强烈的画面感的文字.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《读者》有感 | 具象化的时间",
+      "file": "reading-notes-data/notes/2022/2022-04-《读者》有感-具象化的时间.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《当下即是生活》有感",
+      "file": "reading-notes-data/notes/2022/2022-03-《当下即是生活》有感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "《一条老狗》有感",
+      "file": "reading-notes-data/notes/2022/2022-02-《一条老狗》有感.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "2022",
+      "title": "回忆",
+      "file": "reading-notes-data/notes/2022/2022-01-回忆.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "附录",
+      "title": "图文排版 | 读书分享 | 幻想 | 写作",
+      "file": "reading-notes-data/notes/附录/附录-02-图文排版-读书分享-幻想-写作.txt",
+      "tag": "读后感"
+    },
+    {
+      "year": "附录",
+      "title": "如何做自媒体的一点心得",
+      "file": "reading-notes-data/notes/附录/附录-01-如何做自媒体的一点心得.txt",
+      "tag": "读后感"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="wuxia">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>读书笔记 — 张单单的技术江湖</title>
+<link rel="stylesheet" href="reading.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">张单单 · 技术江湖</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">关于</a></li>
+      <li><a href="../index.html#skills">技艺</a></li>
+      <li><a href="../index.html#gallery">图录</a></li>
+      <li><a href="articles.html">文章</a></li>
+      <li><a href="reading-notes.html" class="active">读书笔记</a></li>
+      <li><a href="photography.html">摄影</a></li>
+      <li><a href="../index.html#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hd">
+  <a href="../index.html" class="back-link">返回江湖</a>
+  <h1>读书笔记</h1>
+  <p class="hd-sub">书山有路勤为径，学海无涯苦作舟</p>
+</header>
+
+<div class="wuxia-divider">◆ ◇ ◆ ◇ ◆</div>
+
+<main class="note-list" id="noteRoot">
+  <div class="loading">正在展卷阅卷……</div>
+</main>
+<script>
+(async function () {
+  const root = document.getElementById("noteRoot");
+  const YEAR_CN = {"2022":"二〇二二","2023":"二〇二三","2024":"二〇二四","2025":"二〇二五","附录":"附录"};
+  const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  try {
+    const res = await fetch("reading-notes-data/reading-notes.json");
+    if (!res.ok) throw new Error("索引读取失败 " + res.status);
+    const data = await res.json();
+    const notes = data.notes || [];
+    const order = [], groups = {};
+    notes.forEach((n) => {
+      if (!groups[n.year]) { groups[n.year] = []; order.push(n.year); }
+      groups[n.year].push(n);
+    });
+    root.innerHTML = "";
+    for (const year of order) {
+      const yc = YEAR_CN[year] || year;
+      const sub = year === "附录" ? "随笔 · 自媒体心得" : "读书札记";
+      const sec = document.createElement("section");
+      sec.className = "year-vol";
+      sec.innerHTML = '<div class="vol-mark"><span class="vol-year">' + yc +
+        '</span><span class="vol-line"></span><span class="vol-sub">' + sub + "</span></div>";
+      root.appendChild(sec);
+      const roll = document.createElement("div");
+      roll.className = "note-roll";
+      root.appendChild(roll);
+      groups[year].forEach((n) => {
+        const a = document.createElement("a");
+        a.className = "note-list-item";
+        a.href = "reading-note-detail.html?file=" + encodeURIComponent(n.file) +
+                 "&title=" + encodeURIComponent(n.title);
+        a.innerHTML = '<div class="note-list-body"><span class="note-tag">' + (n.tag || "读后感") +
+          "</span><h3>" + esc(n.title) + '</h3><div class="note-meta">' + yc + " · " +
+          (n.tag || "读后感") + "</div></div>";
+        roll.appendChild(a);
+      });
+    }
+  } catch (e) {
+    root.innerHTML = '<div class="loading">展卷失败：' + esc(e.message) +
+      "<br>请通过本地服务器（如 <code>python -m http.server</code>）访问本页，file:// 下浏览器会拦截 fetch。</div>";
+  }
+})();
+</script>
+
+<footer id="siteFooter"></footer>
+<script src="footer.js"></script>
+</body>
+</html>

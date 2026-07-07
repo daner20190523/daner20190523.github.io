@@ -60,6 +60,18 @@
         {
           "file": "xiaodian_ZK_conquest_3_dengfeng.png",
           "label": "ZK 登峰造极"
+        },
+        {
+          "file": "xiaodian_1_mcp_universal_key.png",
+          "label": "MCP万能钥匙"
+        },
+        {
+          "file": "xiaodian_2_mcp_architecture.png",
+          "label": "MCP架构拆解"
+        },
+        {
+          "file": "xiaodian_3_mcp_pitfalls.png",
+          "label": "MCP踩坑指南"
         }
       ]
     }

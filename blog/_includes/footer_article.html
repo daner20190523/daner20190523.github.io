@@ -1,0 +1,19 @@
+<!-- 共享页脚模板 — 所有 blog 文章页共用 -->
+<!-- 使用方式：替换 card_template_web.html 中的 <!-- BLOG_FOOTER --> 占位符 -->
+<!-- 变量：{{REFS}} = <li>引用1</li><li>引用2</li>... -->
+  <div class="footer">
+    <div class="footer-left">
+      <span class="refs-label">参 考 文 献</span>
+      <ul class="refs">
+        {{REFS}}
+      </ul>
+      <div class="sig-line"></div>
+      <div class="sig-name">daner技术栈</div>
+      <div class="sig-sub">Tech Knowledge Card · Web Edition · Multi-source verified</div>
+    </div>
+    <div class="footer-right">
+      <img src="../qrcode_wechat.jpg" alt="关注公众号 daner技术栈" class="qrcode-img" />
+      <span class="qrcode-hint">扫码关注</span>
+    </div>
+  </div>
+<!-- /BLOG_FOOTER -->

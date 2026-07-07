@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="wuxia">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>读书笔记 · 正文 — 张单单的技术江湖</title>
+<link rel="stylesheet" href="reading.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">张单单 · 技术江湖</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">关于</a></li>
+      <li><a href="../index.html#skills">技艺</a></li>
+      <li><a href="../index.html#gallery">图录</a></li>
+      <li><a href="articles.html">文章</a></li>
+      <li><a href="reading-notes.html" class="active">读书笔记</a></li>
+      <li><a href="photography.html">摄影</a></li>
+      <li><a href="../index.html#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
+<header class="page-hd">
+  <a href="reading-notes.html" class="back-link">读书笔记</a>
+  <h1 id="noteTitle">读书笔记</h1>
+  <p class="hd-sub" id="noteSub">书山有路勤为径，学海无涯苦作舟</p>
+</header>
+
+<div class="wuxia-divider">◆ ◇ ◆ ◇ ◆</div>
+
+<main class="note-detail" id="detailRoot">
+  <div class="loading">正在展卷……</div>
+</main>
+<script>
+(async function () {
+  const root = document.getElementById("detailRoot");
+  const titleEl = document.getElementById("noteTitle");
+  const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  const p = new URLSearchParams(location.search);
+  const file = p.get("file"), title = p.get("title");
+  if (title) { try { titleEl.textContent = decodeURIComponent(title); } catch (e) {} }
+  if (!file) {
+    root.innerHTML = '<div class="loading">缺少正文参数。<a href="reading-notes.html">\u8fd4\u56de\u8bfb\u4e66\u7b14\u8bb0</a></div>';
+    return;
+  }
+  try {
+    const r = await fetch(decodeURIComponent(file));
+    if (!r.ok) throw new Error("正文读取失败 " + r.status);
+    const text = await r.text();
+    root.innerHTML = '<article class="note-card"><span class="note-tag">\u8bfb\u540e\u611f</span><div class="note-text">' + esc(text) + "</div></article>";
+  } catch (e) {
+    root.innerHTML = '<div class="loading">展卷失败：' + esc(e.message) +
+      "<br>请联系站长修复。</div>";
+  }
+})();
+</script>
+<footer id="siteFooter"></footer>
+<script src="footer.js"></script>
+</body>
+</html>
