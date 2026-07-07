@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="wuxia">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 智能体 · 征服手札：从恐惧到精通的征服之路</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a1a1a; --paper: #ffffff; --bg: #f5f4f0;
+    --accent: #d94535; --accent-soft: #fef0ee; --warm-gray: #f7f5f0;
+    --border: #e8e4dc; --muted: #6b6560; --code-bg: #1e1e24;
+    --code-text: #d6d3ce; --green: #2d8a6e; --amber: #c27a2a;
+    --radius: 6px; --shadow: 0 2px 20px rgba(0,0,0,0.06);
+    --section-gap: 56px; --content-width: 820px;
+    --font-heading: Georgia, "Noto Serif SC", "Songti SC", "STSong", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Inter", "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", "Consolas", monospace;
+    --font-size-base: 17px; --line-height-base: 1.85;
+  }
+
+  [data-theme="wuxia"] {
+    --ink: #1a1410; --paper: #faf7f0; --bg: #ede8db; --accent: #c43a31;
+    --accent-soft: #fdf2f0; --warm-gray: #f5efe0; --border: #d9ceb8;
+    --muted: #6b5e4f; --green: #3a7a4a; --amber: #b8943e;
+    --font-heading: "Noto Serif SC", "KaiTi", "STKaiti", "楷体", "Songti SC", serif;
+    --font-body: "Noto Serif SC", "PingFang SC", "KaiTi", "STKaiti", sans-serif;
+    --radius: 2px; --shadow: 0 4px 32px rgba(100,60,20,0.08);
+  }
+
+  body {
+    font-family: var(--font-body); font-size: var(--font-size-base);
+    line-height: var(--line-height-base); color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased; padding: 48px 20px 80px;
+  }
+
+  .page {
+    max-width: var(--content-width); margin: 0 auto;
+    background: var(--paper); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+
+  .top-bar {
+    display: flex; align-items: center; gap: 18px;
+    max-width: var(--content-width); margin: 0 auto 24px; padding: 0 12px;
+  }
+
+  .top-bar .logo {
+    font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; color: var(--muted);
+  }
+
+  .top-bar .tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    padding: 4px 14px; border-radius: 100px;
+    border: 1px solid var(--border); color: var(--accent);
+    background: var(--accent-soft); white-space: nowrap;
+  }
+
+  .masthead {
+    padding: 64px 72px 48px; position: relative;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--paper) 0%, #f0e8d0 100%);
+  }
+
+  .masthead::after {
+    content: ""; position: absolute; bottom: 0; left: 72px;
+    width: 56px; height: 4px; background: var(--accent); border-radius: 2px;
+  }
+
+  .masthead .kicker {
+    font-size: 11px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 24px; display: block;
+  }
+
+  .masthead h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 52px); font-weight: 800;
+    line-height: 1.1; color: var(--ink);
+    letter-spacing: -1px; margin-bottom: 16px;
+  }
+
+  .masthead .deck {
+    font-size: clamp(16px, 2.2vw, 20px); line-height: 1.65;
+    color: var(--muted); max-width: 580px;
+  }
+
+  .masthead .byline {
+    margin-top: 28px; display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--muted); letter-spacing: 0.3px;
+  }
+
+  .byline .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+
+  /* TOC */
+  .toc {
+    padding: 28px 72px; border-bottom: 1px solid var(--border);
+    display: flex; gap: 32px; flex-wrap: wrap;
+  }
+
+  .toc-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .toc-item:hover { color: var(--accent); }
+  .toc-num {
+    font-family: var(--font-heading); font-size: 20px;
+    font-weight: 700; color: var(--accent); opacity: 0.5; line-height: 1;
+  }
+
+  /* Section */
+  .section {
+    padding: var(--section-gap) 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    display: flex; align-items: flex-start; gap: 20px; margin-bottom: 32px;
+  }
+
+  [data-theme="wuxia"] .section-num {
+    writing-mode: horizontal-tb; font-size: 48px; font-weight: 700;
+    color: var(--accent); opacity: 0.7;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3.5vw, 30px); font-weight: 700;
+    color: var(--ink); letter-spacing: -0.3px; line-height: 1.3;
+  }
+
+  .section-body { font-size: var(--font-size-base); line-height: var(--line-height-base); color: #3d3830; }
+  .section-body p { margin-bottom: 16px; }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* Pull Quote */
+  .pull-quote {
+    position: relative; margin: 28px 0;
+    padding: 28px 28px 28px 64px;
+    background: var(--warm-gray);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .pull-quote::before {
+    content: "\201C"; position: absolute; left: 16px; top: 4px;
+    font-family: Georgia, var(--font-heading); font-size: 64px;
+    line-height: 1; color: var(--accent); opacity: 0.2;
+  }
+
+  .pull-quote .quote-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 10px; display: block;
+  }
+
+  .pull-quote p {
+    font-size: clamp(15px, 2vw, 18px); line-height: 1.85;
+    color: #4a4038; font-style: italic; margin: 0;
+  }
+
+  /* Feature Grid */
+  .feature-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; margin: 22px 0;
+  }
+
+  .feature-card {
+    padding: 24px; background: var(--paper);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    transition: box-shadow 0.2s;
+  }
+
+  .feature-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+  .feature-card .feat-icon {
+    font-size: 28px; margin-bottom: 12px; display: block;
+  }
+
+  .feature-card strong {
+    display: block; font-size: 15px; color: var(--ink);
+    margin-bottom: 8px; letter-spacing: 0.2px;
+  }
+
+  .feature-card .feat-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.75;
+  }
+
+  /* Compare Table */
+  .compare-table-wrap {
+    margin: 24px 0; overflow-x: auto;
+    border: 1px solid var(--border); border-radius: var(--radius);
+  }
+
+  .compare-table {
+    width: 100%; border-collapse: collapse; font-size: 14px;
+  }
+
+  .compare-table thead th {
+    padding: 16px 20px; text-align: left; font-size: 12px;
+    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    border-bottom: 2px solid var(--border); background: var(--warm-gray);
+  }
+
+  .compare-table thead th:first-child { color: var(--accent); }
+  .compare-table thead th:nth-child(2) { color: var(--amber); }
+
+  .compare-table td {
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    vertical-align: top; line-height: 1.7;
+  }
+
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+
+  .compare-table .dim-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: var(--muted); text-transform: uppercase;
+    display: block; margin-bottom: 4px;
+  }
+
+  /* Code Block */
+  .code-block {
+    background: var(--code-bg); border-radius: var(--radius);
+    padding: 24px 28px; margin: 22px 0;
+    font-family: var(--font-mono); font-size: 13.5px;
+    line-height: 1.9; color: var(--code-text);
+    overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+    position: relative; padding-top: 40px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .code-block::before {
+    content: "● ● ●"; position: absolute;
+    top: 14px; left: 20px; font-size: 9px;
+    letter-spacing: 5px; color: #555; opacity: 0.5;
+  }
+
+  .code-block .comment { color: #6a737d; font-style: italic; }
+  .code-block .cmd { color: #61afef; font-weight: 500; }
+  .code-block .flag { color: #c678dd; }
+  .code-block .str { color: #98c379; }
+  .code-block .kw { color: #e06c75; }
+
+  /* Alert */
+  .alert {
+    margin: 22px 0; padding: 22px 22px 22px 56px;
+    position: relative; border: 1px solid;
+    border-radius: var(--radius); font-size: 15px; line-height: 1.85;
+  }
+
+  .alert::before { position: absolute; left: 20px; top: 22px; font-size: 20px; }
+
+  .alert.danger { background: #fef7f6; border-color: #f0cfc8; color: #8b2e24; }
+  .alert.danger::before { content: "⚠"; }
+  .alert.info { background: #f6faf9; border-color: #c0e0d5; color: #1f5c4b; }
+  .alert.info::before { content: "✦"; color: var(--green); }
+
+  .alert .alert-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; opacity: 0.65;
+    margin-bottom: 8px; display: block;
+  }
+
+  .alert p { margin: 0; }
+
+  /* Conquest Profile */
+  .conquest-profile {
+    margin: 22px 0; padding: 24px;
+    background: rgba(180,140,80,0.04); border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .conquest-profile .cp-title {
+    display: block; font-size: 12px; font-weight: 700;
+    letter-spacing: 4px; color: var(--amber); margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .conquest-profile .cp-row {
+    display: flex; align-items: flex-start;
+    padding: 6px 0; font-size: 15px; line-height: 1.8;
+  }
+
+  .conquest-profile .cp-row .cp-icon { width: 24px; flex-shrink: 0; font-size: 14px; }
+  .conquest-profile .cp-row .cp-label { font-weight: 700; color: var(--ink); margin-right: 6px; white-space: nowrap; }
+
+  /* Stage table */
+  .stage-grid {
+    display: grid; gap: 20px; margin: 22px 0;
+  }
+
+  .stage-card {
+    padding: 24px; border: 2px solid var(--border);
+    border-radius: var(--radius); background: var(--paper);
+  }
+
+  .stage-card .stage-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+  }
+
+  .stage-card .stage-rank {
+    font-family: var(--font-heading); font-size: 20px; font-weight: 700;
+    color: var(--accent); writing-mode: vertical-rl; padding: 4px 8px;
+    border: 1px solid var(--accent); border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .stage-card .stage-rank.jade { color: var(--green); border-color: var(--green); }
+
+  .stage-card .stage-name {
+    font-size: 18px; font-weight: 700; color: var(--ink);
+  }
+
+  .stage-card .stage-do { font-size: 14px; color: var(--ink); line-height: 1.8; margin-bottom: 8px; }
+  .stage-card .stage-check { font-size: 13px; color: var(--green); line-height: 1.7; margin-bottom: 6px; }
+  .stage-card .stage-pitfall { font-size: 13px; color: var(--accent); line-height: 1.7; margin-bottom: 6px; }
+  .stage-card .stage-reveal { font-size: 13px; color: var(--amber); line-height: 1.7; font-style: italic; }
+
+  /* Cert list */
+  .cert-list {
+    list-style: none; margin: 22px 0; display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .cert-list li {
+    font-size: 15px; line-height: 1.8; color: #3d3830;
+    padding: 10px 14px 10px 30px; position: relative;
+    background: rgba(58,122,74,0.04); border-radius: var(--radius);
+  }
+
+  .cert-list li::before { content: "✅"; position: absolute; left: 8px; top: 11px; font-size: 12px; }
+
+  /* Domain map */
+  .domain-map {
+    margin: 22px 0; padding: 28px;
+    background: var(--warm-gray); border: 1px solid var(--border);
+    border-radius: var(--radius); text-align: center;
+  }
+
+  .domain-map .dm-conquered {
+    display: inline-block; padding: 8px 24px; margin-bottom: 10px;
+    border: 2px solid var(--accent); font-size: 14px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px;
+    background: rgba(196,58,49,0.03);
+  }
+
+  .domain-map .dm-label {
+    display: block; font-size: 11px; letter-spacing: 2px;
+    color: var(--muted); margin: 14px 0 8px; font-weight: 700;
+  }
+
+  .domain-map .dm-ahead {
+    display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .domain-map .dm-ahead span {
+    padding: 6px 14px; font-size: 12px;
+    border: 1px dashed var(--border); color: var(--muted);
+    border-radius: var(--radius);
+  }
+
+  /* Highlight */
+  .hl {
+    background: linear-gradient(180deg, transparent 55%, rgba(196,58,49,0.15) 55%);
+    font-weight: 600; color: var(--ink); padding: 0 2px;
+  }
+
+  em.key { font-style: normal; font-weight: 600; color: var(--accent); }
+
+  /* Image */
+  .illo-img { max-width: 100%; margin: 20px 0; border: 1px solid rgba(180,150,100,0.1); display: block; }
+
+  /* Footer */
+  .footer {
+    background: var(--ink); padding: 56px 72px 48px;
+    color: #b0aca4; display: grid;
+    grid-template-columns: 1fr auto; gap: 48px;
+  }
+
+  .footer .footer-left { min-width: 0; }
+  .footer .refs-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: #5c5850;
+    margin-bottom: 18px; display: block;
+  }
+
+  .footer .refs { list-style: none; margin-bottom: 36px; }
+
+  .footer .refs li {
+    font-size: 12px; line-height: 2; color: #7a756b;
+    padding-left: 18px; position: relative; margin-bottom: 4px;
+    word-break: break-all;
+  }
+
+  .footer .refs li::before {
+    content: "[·]"; position: absolute; left: 0; color: #4a4540; font-size: 10px;
+  }
+
+  .footer .sig-line {
+    width: 40px; height: 2px; background: #3a3530; margin-bottom: 20px;
+  }
+
+  .footer .sig-name {
+    font-family: var(--font-heading); font-size: 22px;
+    font-weight: 700; color: var(--paper); letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .footer .sig-sub { font-size: 11px; letter-spacing: 1px; color: #5c5850; }
+
+  .footer .footer-right {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end; gap: 10px;
+  }
+
+  .footer .qrcode-img {
+    width: 90px; height: 90px; border-radius: 6px;
+    opacity: 0.88; border: 1px solid rgba(180,180,170,0.15); display: block;
+  }
+
+  .footer .qrcode-hint { font-size: 10px; letter-spacing: 1.5px; color: #5c5850; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    body { padding: 16px 8px 48px; }
+    .page { max-width: 100%; }
+    .top-bar { padding: 0 4px; margin-bottom: 16px; }
+    .masthead { padding: 40px 28px 32px; }
+    .masthead h1 { font-size: 30px; }
+    .masthead .deck { font-size: 16px; }
+    .masthead::after { left: 28px; }
+    .toc { padding: 20px 28px; gap: 16px; }
+    .section { padding: 40px 28px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .footer { padding: 40px 28px; grid-template-columns: 1fr; gap: 28px; }
+    .footer .footer-right { flex-direction: row; justify-content: flex-start; align-items: center; gap: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .masthead { padding: 32px 20px 28px; }
+    .masthead h1 { font-size: 26px; }
+    .masthead::after { left: 20px; }
+    .toc { padding: 16px 20px; flex-direction: column; gap: 10px; }
+    .section { padding: 32px 20px; --section-gap: 32px; }
+    .footer { padding: 32px 20px; }
+    .footer .footer-right { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .page { box-shadow: none; max-width: 100%; }
+    .top-bar, .toc { display: none; }
+  }
+</style>
+</head>
+<body>
+<div style="max-width:720px;margin:0 auto 12px;padding:0 8px;">
+  <a href="../index.html" style="font-size:12px;color:#8b7a6a;text-decoration:none;letter-spacing:1px;">← 返回技术江湖</a>
+</div>
+<div class="top-bar">
+  <span class="logo">征服手札</span>
+  <span class="tag">从恐惧到精通</span>
+</div>
+
+<div class="page">
+
+  <!-- ===== Masthead ===== -->
+  <div class="masthead">
+    <span class="kicker">⚔ 征服手札</span>
+    <h1>Agent 智能体 · 征服之路</h1>
+    <p class="deck">从被"Agent"三个字母劝退，到亲手搭出能自主决策的AI系统——一份可执行的分阶修炼路线。</p>
+    <div class="byline">
+      <span class="dot"></span>
+      <span>Curated by daner技术栈 · Multi-source verified · Web Edition</span>
+    </div>
+  </div>
+
+  <!-- ===== TOC ===== -->
+  <div class="toc">
+    <a href="#ch1" class="toc-item"><span class="toc-num">壹</span><span>初窥门径 · 直面</span></a>
+    <a href="#ch2" class="toc-item"><span class="toc-num">贰</span><span>闭关修炼 · 修炼</span></a>
+    <a href="#ch3" class="toc-item"><span class="toc-num">叁</span><span>招式拆解 · 通关</span></a>
+    <a href="#ch4" class="toc-item"><span class="toc-num">肆</span><span>登峰造极 · 传承</span></a>
+  </div>
+
+  <!-- ===== 壹回 · 初窥门径 ===== -->
+  <div class="section" id="ch1">
+    <div class="section-label">
+      <span class="section-num">壹</span>
+      <div>
+        <span class="section-title">初窥门径 · 【直面】这东西到底有多难？</span>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>当别人跟你说"Agent 是能自主决策、规划执行、调用工具的 AI 系统"时，你是不是只能点头，然后内心OS：<span class="hl">"所以它到底是啥？跟我写的普通 Python 脚本有什么区别？"</span></p>
+
+      <div class="pull-quote">
+        <span class="quote-label">武功心法</span>
+        <p>Agent 就像你雇了一个超级实习生。你告诉他"帮我做一份竞品分析报告"，他不是等你一步步指挥，而是<b>自己上网搜资料、自己整理数据、自己写结论</b>。你只需要最后看一眼结果，说"行"或"返工"。这就是 Agent 的核心——<em>自主性</em>。</p>
+      </div>
+
+      <p><b>三点劝退清单：</b></p>
+      <p><span class="hl">劝退点一 · 概念轰炸</span> —— 你一搜"Agent"，Planning、Memory、Tool Use、ReAct、MCP、A2A…每个词背后都是一门课。</p>
+      <p><span class="hl">劝退点二 · 上手就卡</span> —— API Key 忘配、向量数据库没装、prompt 写了一百个字 Agent 还是不听话。第一个 hello world 就劝退了 80% 的人。</p>
+      <p><span class="hl">劝退点三 · 不确定性</span> —— 写传统代码，你输入什么它输出什么。Agent 不一样：同一个问题问两次，可能给你两个完全不同的答案。这种"不可控感"才是真正让人崩溃的东西。</p>
+
+      <div class="conquest-profile">
+        <span class="cp-title">⚔ 征服者档案</span>
+        <div class="cp-row"><span class="cp-icon">📋</span><span><span class="cp-label">前置技能：</span>Python 基础 + 会调 API（你不需要懂深度学习）</span></div>
+        <div class="cp-row"><span class="cp-icon">⏱</span><span><span class="cp-label">征服周期：</span>第一天跑通第一个 Agent；第一周能写工具；第一个月能搭完整系统</span></div>
+        <div class="cp-row"><span class="cp-icon">⚡</span><span><span class="cp-label">不用先学：</span>Transformer 原理、模型微调、GPU 集群——Agent 工程师用已训练好的模型就够了</span></div>
+        <div class="cp-row"><span class="cp-icon">🪨</span><span><span class="cp-label">第一块垫脚石：</span>Agent = LLM（大脑）+ 规划（怎么干）+ 记忆（记下干了啥）+ 工具（能干具体活）。记住这四件套，你就拿到了登山的钥匙。</span></div>
+      </div>
+
+      <img src="../images/xiaodian_1_agent_mountain.png" class="illo-img" alt="墨小颠面对技术大山" />
+
+    </div>
+  </div>
+
+  <!-- ===== 贰回 · 闭关修炼 ===== -->
+  <div class="section" id="ch2">
+    <div class="section-label">
+      <span class="section-num">贰</span>
+      <div>
+        <span class="section-title">闭关修炼 · 【修炼】这个时间花得值不值？</span>
+      </div>
+    </div>
+    <div class="section-body">
+      <p><b>不练 Agent 的人 vs 练成 Agent 的人：</b></p>
+      <p>做竞品分析：手动打开 10 个网页，复制粘贴，整理成 Excel——<b>3 小时</b>。学了 Agent 的人：写一段 prompt，Agent 自动搜索、分析、汇总、出报告——<b>3 分钟</b>。</p>
+      <p>面试被问"你怎么用 AI 提升效率？"——不练的人支支吾吾说"我用 Copilot 写代码"。练成的人："我搭了一个多 Agent 系统，准确率 92%，每天节省 4 个人工时。"</p>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>练成前（狼狈）</th><th>练成后（从容）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="dim-label">日常任务</span>手动打开 10 个网页查资料</td><td><span class="dim-label">日常任务</span>一句话让 Agent 干活，你喝咖啡</td></tr>
+            <tr><td><span class="dim-label">技术成长</span>"AI 好难，跟我没关系"</td><td><span class="dim-label">技术成长</span>"原来 AI 是一套可控的工程系统"</td></tr>
+            <tr><td><span class="dim-label">面试现场</span>"我用过 ChatGPT"——面试官微笑，内心：这人不行</td><td><span class="dim-label">面试现场</span>"我设计过 ReAct Agent，用 MCP 接了 5 个工具"——面试官加微信</td></tr>
+            <tr><td><span class="dim-label">收入上限</span>普通 CRUD 工程师，跟 AI 抢饭碗</td><td><span class="dim-label">收入上限</span>AI 应用架构师，指挥 AI 干活——饭碗 AI 抢不走</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feat-icon">⚔</span>
+          <strong>第一重功力：从"调 API"到"造人"</strong>
+          <span class="feat-desc">你不再只是调 OpenAI 接口——你学会给大模型装上"手脚"和"记忆"，让它像一个真正的员工一样干活。</span>
+        </div>
+        <div class="feature-card">
+          <span class="feat-icon">🛡</span>
+          <strong>第二重功力：把不确定性管住</strong>
+          <span class="feat-desc">Agent 最大的恐惧是"不可控"——你学会用重试、回退、校验、人工审核节点给 Agent 套上缰绳。</span>
+        </div>
+        <div class="feature-card">
+          <span class="feat-icon">⚡</span>
+          <strong>第三重功力：系统设计思维跃迁</strong>
+          <span class="feat-desc">学会 Agent 后，你不再思考"这个功能怎么写"，而是思考"这个任务让哪个 Agent 做、需要什么工具"——这才是 2025+ 真正的工程师思维。</span>
+        </div>
+      </div>
+
+      <p><span class="hl">隐藏彩蛋：可迁移能力。</span>学会了 Agent 的设计模式（ReAct / Plan-Execute / Multi-Agent），你再去学 RAG、再去看任何 LLM 应用框架，你会觉得："哦，不就是不同工具箱的排列组合吗？"——<em class="key">Agent 是 LLM 应用的"元技能"，学好一个，一通百通。</em></p>
+
+    </div>
+  </div>
+
+  <!-- ===== 叁回 · 招式拆解 ===== -->
+  <div class="section" id="ch3">
+    <div class="section-label">
+      <span class="section-num">叁</span>
+      <div>
+        <span class="section-title">招式拆解 · 【通关】一步一步怎么练成？</span>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="stage-grid">
+        <div class="stage-card">
+          <div class="stage-header">
+            <span class="stage-rank">第<br>一<br>阶</span>
+            <span class="stage-name">扎马步 · 跑通第一个 Agent</span>
+          </div>
+          <div class="stage-do"><b>做：</b>注册 OpenAI/DeepSeek API → 用 Python 调一次 Chat Completion → 给模型写带 system prompt + user prompt 的对话 → 让模型输出 JSON 格式。</div>
+          <div class="stage-check">✅ 练成标志：你能用 30 行代码让一个 LLM 帮你自动回复邮件，格式正确。</div>
+          <div class="stage-pitfall">🔥 避坑：API Key 不要硬编码！用环境变量。第一次调不通大概率是网络问题。</div>
+          <div class="stage-reveal">💡 "原来我之前觉得 AI 很难，只是因为没写过一行调 API 的代码。"</div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-header">
+            <span class="stage-rank jade">第<br>二<br>阶</span>
+            <span class="stage-name">走套路 · 实现 ReAct Agent</span>
+          </div>
+          <div class="stage-do"><b>做：</b>用 LangChain 或原生 Python 实现一个 ReAct Agent——给模型 2 个工具（搜索 + 计算器），让它在 Thought→Action→Observation 循环中自动决策。</div>
+          <div class="stage-check">✅ 练成标志：让 Agent 回答"深圳今天天气多少度？这个温度加 10 度是多少？"——自动搜天气再做计算。</div>
+          <div class="stage-pitfall">🔥 避坑：Tool 的 description 写得太敷衍——LLM 靠描述决定用不用工具，不是靠函数名。</div>
+          <div class="stage-reveal">💡 你开始能看懂 Agent 的报错了——是真的理解了循环中哪一步出了问题。</div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-header">
+            <span class="stage-rank">第<br>三<br>阶</span>
+            <span class="stage-name">破竹 · 搭一个真实 Agent 系统</span>
+          </div>
+          <div class="stage-do"><b>做：</b>搭一个"客服自动分类+分流"Agent。输入客户消息 → 判断意图（投诉/咨询/售后）→ 拆解信息 → 调用不同工具处理。</div>
+          <div class="stage-check">✅ 练成标志：Agent 正确处理 10 条不同类型客户消息，准确率 80%+，你知道未命中那 2 条的原因。</div>
+          <div class="stage-pitfall">🔥 避坑：生产环境的 prompt 会被用户输入污染、API 会超时、工具会返回格式错误——做好异常兜底。</div>
+          <div class="stage-reveal">💡 面试官问"Agent 生产环境有什么坑"，你能讲出一套完整的 Token 控制+超时处理+兜底策略。</div>
+        </div>
+
+        <div class="stage-card">
+          <div class="stage-header">
+            <span class="stage-rank jade">第<br>四<br>阶</span>
+            <span class="stage-name">融会 · 理解 Agent 的边界</span>
+          </div>
+          <div class="stage-do"><b>做：</b>阅读 Anthropic 的 Building Effective Agents 博客；理解 Workflow vs Agent 的核心差异；尝试 CrewAI 或 AutoGen 搭多 Agent 协作系统。</div>
+          <div class="stage-check">✅ 练成标志：你能清晰讲清什么场景用单 Agent、Workflow、多 Agent——以及为什么大多数场景不需要多 Agent。</div>
+          <div class="stage-pitfall">🔥 避坑：最大的坑叫"过度设计"——只有一个 Agent 能解决的问题，硬上三个。复杂度指数增长。</div>
+          <div class="stage-reveal">💡 Agent 的设计者其实在解决你自己也遇到过的问题——"怎么让黑盒模型输出可控结果"——这是工程方法论。</div>
+        </div>
+      </div>
+
+      <div class="code-block"><span class="comment"># 最简单的 ReAct Agent（原生 Python，不依赖 LangChain）</span>
+<span class="kw">import</span> openai
+
+<span class="kw">def</span> <span class="cmd">search</span>(query):
+    <span class="kw">return</span> <span class="str">f"搜索结果：{query}的答案是42"</span>
+
+<span class="kw">def</span> <span class="cmd">calculate</span>(expr):
+    <span class="kw">return</span> <span class="str">f"计算结果：{eval(expr)}"</span>
+
+tools = {<span class="str">"search"</span>: search, <span class="str">"calculate"</span>: calculate}
+
+<span class="comment"># Agent 循环：Thought → Action → Observation → Answer</span>
+<span class="kw">def</span> <span class="cmd">run_agent</span>(user_query):
+    messages = [{<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"You are an agent..."</span>}]
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="cmd">range</span>(<span class="flag">10</span>):
+        resp = openai.chat.completions.create(<span class="flag">model</span>=<span class="str">"gpt-4"</span>, <span class="flag">messages</span>=messages)
+        msg = resp.choices[<span class="flag">0</span>].message.content
+        <span class="kw">if</span> <span class="str">"ACTION:"</span> <span class="kw">in</span> msg:
+            result = tools[<span class="cmd">action_str.split</span>(<span class="str">"("</span>)[<span class="flag">0</span>]]()
+            messages.append({<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">f"OBSERVATION: {result}"</span>})
+        <span class="kw">else</span>:
+            <span class="kw">return</span> msg
+    <span class="kw">return</span> <span class="str">"Agent 未能在 10 轮内完成"</span></div>
+
+      <img src="../images/xiaodian_2_agent_coding.png" class="illo-img" alt="墨小颠练功突破" />
+    </div>
+  </div>
+
+  <!-- ===== 肆回 · 登峰造极 ===== -->
+  <div class="section" id="ch4">
+    <div class="section-label">
+      <span class="section-num">肆</span>
+      <div>
+        <span class="section-title">登峰造极 · 【传承】征服之后是什么？</span>
+      </div>
+    </div>
+    <div class="section-body">
+      <img src="../images/xiaodian_3_agent_summit.png" class="illo-img" alt="墨小颠登顶俯瞰" />
+
+      <p>四阶走完，你已经不是当初那个被"Agent"劝退的人了：</p>
+
+      <ul class="cert-list">
+        <li><b>你可以搭一个从零到一的 Agent 系统</b>——不靠 LangChain 封装的"黑箱"，你知道每一步发生了什么</li>
+        <li><b>简历上写"AI Agent 开发"不心虚</b>——你亲手写过 ReAct、调过 Tool Calling、处理过异常循环</li>
+        <li><b>面试被问 Agent 工作原理</b>——不再是背八股，你能讲出每种设计模式的适用场景和边界</li>
+        <li><b>竞品分析、数据采集、内容生成</b>——全让 Agent 代劳，你的时间留给需要人类判断的事</li>
+        <li><b>2026 年 Agent 工程师的薪资</b>——比纯 CRUD 后端高出 40%-60%，你掌握的是"造生产力工具"的能力</li>
+      </ul>
+
+      <div class="domain-map">
+        <div class="dm-conquered">🏔 已征服 · Agent 核心能力</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">ReAct / Tool Calling / Prompt Engineering / LangChain / 单 Agent 系统</div>
+        <div class="dm-label">☁ 尚在云雾中的方向（不用现在攻克）</div>
+        <div class="dm-ahead">
+          <span>多 Agent 协作</span><span>MCP 协议</span><span>Agent 评估</span>
+          <span>模型微调</span><span>强化学习</span><span>AgentOps</span>
+        </div>
+      </div>
+
+      <div class="alert danger">
+        <span class="alert-label">⚔ 征服者箴言</span>
+        <p><b>你不需要学会全部才能用。</b>Agent 技术 80% 的价值集中在 ReAct 模式 + Tool Calling。学会这两样，你已经能解决 80% 的实际问题。</p>
+      </div>
+
+      <div class="alert danger">
+        <span class="alert-label">⚔ 征服者箴言</span>
+        <p><b>最大的坑不是技术，是心态。</b>你不是"不够聪明"，你是被网上那些"Multi-Agent RAG MCP ReAct 全栈"的标题吓住了。Agent 就是一群工程师想出来的解决方案——他们能想明白，你也能。</p>
+      </div>
+
+      <div class="alert info">
+        <span class="alert-label">⚔ 给下一个征服者</span>
+        <p>1. <b>不用看论文</b>，直接搜"ReAct Agent Python tutorial"，跑通第一个 Demo 只需 30 分钟。<br>2. <b>别装 LangChain 全家桶</b>——先用原生 Python 写 50 行的 Agent 循环，理解核心逻辑。<br>3. <b>Agent 不是银弹</b>——能用一个 LLM API 解决的事，不要硬上 Agent。简单问题简单解法，才是真正的工程素养。</p>
+      </div>
+
+      <p>好了，征服者。回头看一眼来时的路——那座曾经让你腿软的大山，现在已经在你脚下。<b>把这本手札传给下一个还在山脚仰望的人。</b></p>
+    </div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <div class="footer">
+    <div class="footer-left">
+      <span class="refs-label">References</span>
+      <ul class="refs">
+        <li>Anthropic · Building Effective Agents</li>
+        <li>OpenAI · Function Calling Docs</li>
+        <li>LangChain · ReAct Agent Guide</li>
+        <li>阿里云 · AI Agent 技术原理</li>
+        <li>腾讯云 · Agent 五大模块详解</li>
+        <li>知乎 · Agent 学习路线 2026</li>
+      </ul>
+      <div class="sig-line"></div>
+      <div class="sig-name">daner技术栈</div>
+      <div class="sig-sub">征服手札 · Web Edition · Multi-source verified</div>
+    </div>
+    <div class="footer-right">
+      <img src="../qrcode_wechat.jpg" alt="WeChat QR Code" class="qrcode-img" />
+      <span class="qrcode-hint">扫码关注</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
