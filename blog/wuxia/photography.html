@@ -219,31 +219,8 @@ body {
 
 <div class="wuxia-divider">◆ ◇ ◆ ◇ ◆</div>
 
-<main class="photo-grid">
-  <div class="photo-item">
-    <img src="../images/7486868024386976946.png" alt="蓝泪摄魂" loading="lazy">
-    <div class="photo-overlay"><span class="photo-caption">蓝泪摄魂</span></div>
-  </div>
-  <div class="photo-item">
-    <img src="../images/style_05.png" alt="墨稿留痕" loading="lazy">
-    <div class="photo-overlay"><span class="photo-caption">墨稿留痕</span></div>
-  </div>
-  <div class="photo-item">
-    <img src="../images/7488164447380700945.png" alt="极简无相" loading="lazy">
-    <div class="photo-overlay"><span class="photo-caption">极简无相</span></div>
-  </div>
-  <div class="photo-item">
-    <img src="../images/7494460152177489688.png" alt="天马行空" loading="lazy">
-    <div class="photo-overlay"><span class="photo-caption">天马行空</span></div>
-  </div>
-  <div class="photo-item">
-    <img src="../images/7486854976276870144.png" alt="修行光影" loading="lazy">
-    <div class="photo-overlay"><span class="photo-caption">修行光影</span></div>
-  </div>
-  <div class="photo-item">
-    <img src="../images/7502335520174893037.png" alt="玲珑剔透" loading="lazy">
-    <div class="photo-overlay"><span class="photo-caption">玲珑剔透</span></div>
-  </div>
+<main class="photo-grid" id="photoGrid">
+  <!-- 由 JS 动态加载 photo_manifest.json -->
 </main>
 
 <div class="wuxia-divider">◆ ◇ ◆ ◇ ◆</div>
@@ -265,6 +242,44 @@ body {
     <span class="qrcode-hint">扫码关注</span>
   </div>
 </div>
+
+<script>
+(async () => {
+  const grid = document.getElementById('photoGrid');
+  if (!grid) return;
+
+  const manifestURL = '../images/photo_organized/photo_manifest.json';
+  const imageBase  = '../images/photo_organized/';
+
+  try {
+    const resp = await fetch(manifestURL);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    const images = data.images || [];
+
+    if (images.length === 0) {
+      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0;">暂无照片</p>';
+      return;
+    }
+
+    let html = '';
+    for (const img of images) {
+      const src = imageBase + img.file;
+      const label = img.label || '';
+      html += `
+        <div class="photo-item">
+          <img src="${src}" alt="${label}" loading="lazy">
+          <div class="photo-overlay"><span class="photo-caption">${label}</span></div>
+        </div>`;
+    }
+    grid.innerHTML = html;
+  } catch (err) {
+    grid.innerHTML =
+      '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0;">图录加载失败，请稍后再试</p>';
+    console.error('photo_manifest fetch failed:', err);
+  }
+})();
+</script>
 
 </body>
 </html>
