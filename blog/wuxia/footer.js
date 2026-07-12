@@ -6,6 +6,7 @@
       '<ul class="refs">' +
         '<li><a href="../index.html">\u2190 \u8fd4\u56de\u6c5f\u6e56</a></li>' +
         '<li><a href="reading-notes.html">\u8bfb\u4e66\u7b14\u8bb0</a></li>' +
+        '<li><a href="books.html">\u85c1\u4e66\u9601</a></li>' +
         '<li><a href="articles.html">\u5168\u90e8\u6587\u7ae0</a></li>' +
         '<li><a href="../index.html#gallery">\u6b66\u6797\u56fe\u5f55</a></li>' +
       '</ul>' +
