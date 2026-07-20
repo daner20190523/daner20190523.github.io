@@ -1,0 +1,286 @@
+{
+  "title": "兵器谱 · 编程路线图",
+  "subtitle": "一册一剑，循序渐进 · 从计算机基础，到架构之道，到完整工程",
+  "intro": "习武讲究根基，编程亦然。下面这条路线由浅入深：先立计算机之根本，再修数据结构与算法之内功，通晓网络与操作系统之脉络，精研语言与数据库之器，终至分布式架构与完整工程之大成。每一阶皆配「称手兵器」（书），点击左侧路标，右侧即亮出该阶藏书。",
+  "stages": [
+    {
+      "id": "basic",
+      "name": "计算机基础",
+      "desc": "软硬件如何协作，程序如何在机器上跑起来",
+      "books": [
+        {
+          "id": "csapp",
+          "title": "深入理解计算机系统",
+          "author": "Randal E. Bryant / David R. O'Hallaron",
+          "rating": 5,
+          "status": "已读",
+          "category": "基石",
+          "tags": ["CSAPP", "编译", "体系结构"],
+          "summary": "从程序员视角串联硬件、汇编、操作系统与网络，建立「整台计算机如何运行」的全局观，是打根基的第一本书。"
+        },
+        {
+          "id": "how-programs-run",
+          "title": "程序是怎样跑起来的",
+          "author": "矢泽久雄",
+          "rating": 4,
+          "status": "已读",
+          "category": "入门",
+          "tags": ["科普", "底层"],
+          "summary": "用图示把 CPU、内存、汇编、操作系统讲得通俗易懂，适合作为 CSAPP 之前的缓冲读物。"
+        },
+        {
+          "id": "code-hidden-language",
+          "title": "编码：隐匿在计算机软硬件背后的语言",
+          "author": "Charles Petzold",
+          "rating": 5,
+          "status": "想读",
+          "category": "科普",
+          "tags": ["电报", "二进制", "硬件"],
+          "summary": "从手电筒与莫尔斯码讲起，一步步推导出计算机的全部底层逻辑，读来酣畅淋漓。"
+        }
+      ]
+    },
+    {
+      "id": "dsa",
+      "name": "数据结构与算法",
+      "desc": "程序员的内功心法，决定解决问题的能力上限",
+      "books": [
+        {
+          "id": "hello-algo",
+          "title": "Hello 算法",
+          "author": "靳宇栋（krahets）",
+          "rating": 5,
+          "status": "在读",
+          "category": "图解",
+          "tags": ["动画", "开源", "面试"],
+          "summary": "配动画与多语言代码的开源算法图解书，入门与复习皆宜，社区口碑极佳。"
+        },
+        {
+          "id": "sword-offer",
+          "title": "剑指 Offer",
+          "author": "何海涛",
+          "rating": 5,
+          "status": "已读",
+          "category": "面试",
+          "tags": ["名企", "真题"],
+          "summary": "75 道高频面试题的精解，是算法面试公认的「刷题圣经」，建议配合动手实现。"
+        },
+        {
+          "id": "datastructure-dahua",
+          "title": "大话数据结构",
+          "author": "程杰",
+          "rating": 4,
+          "status": "已读",
+          "category": "入门",
+          "tags": ["通俗", "图解"],
+          "summary": "用生活化比喻讲透数组、链表、树、图与排序查找，零基础友好。"
+        },
+        {
+          "id": "clrs",
+          "title": "算法导论",
+          "author": "Thomas H. Cormen 等",
+          "rating": 5,
+          "status": "想读",
+          "category": "经典",
+          "tags": ["严谨", "数学"],
+          "summary": "算法领域的「圣经」，证明严谨、覆盖全面，适合作为长期案头参考而非一口气读完。"
+        }
+      ]
+    },
+    {
+      "id": "net-os",
+      "name": "网络与操作系统",
+      "desc": "程序运行的脉络：进程、内存、网卡与协议",
+      "books": [
+        {
+          "id": "ostep",
+          "title": "操作系统导论",
+          "author": "Remzi H. Arpaci-Dusseau",
+          "rating": 5,
+          "status": "在读",
+          "category": "经典",
+          "tags": ["虚拟化", "并发", "持久化"],
+          "summary": "以「虚拟化 / 并发 / 持久化」三条主线讲透操作系统，习题与代码示例极佳。"
+        },
+        {
+          "id": "tcp-ip-illustrated",
+          "title": "图解 TCP/IP",
+          "author": "竹下隆史 等",
+          "rating": 4,
+          "status": "已读",
+          "category": "图解",
+          "tags": ["网络", "协议"],
+          "summary": "图文并茂梳理 TCP/IP 协议栈，是后端理解网络通信的速成好书。"
+        },
+        {
+          "id": "computer-networking",
+          "title": "计算机网络：自顶向下方法",
+          "author": "James F. Kurose / Keith W. Ross",
+          "rating": 5,
+          "status": "想读",
+          "category": "经典",
+          "tags": ["分层", "HTTP"],
+          "summary": "从应用层往下逐层展开，案例丰富，是理解现代网络栈的首选教材。"
+        }
+      ]
+    },
+    {
+      "id": "java",
+      "name": "编程语言 · Java",
+      "desc": "以 Java 为刃，精研虚拟机、并发与语言特性",
+      "books": [
+        {
+          "id": "ijvm",
+          "title": "深入理解 Java 虚拟机",
+          "author": "周志明",
+          "rating": 5,
+          "status": "已读",
+          "category": "进阶",
+          "tags": ["JVM", "GC", "调优"],
+          "summary": "Java 工程师必读，把内存模型、垃圾回收与字节码讲得明明白白，调优排障全靠它。"
+        },
+        {
+          "id": "effective-java",
+          "title": "Effective Java",
+          "author": "Joshua Bloch",
+          "rating": 5,
+          "status": "已读",
+          "category": "最佳实践",
+          "tags": ["规范", "设计"],
+          "summary": "90 余条实战经验法则，告诉你「Java 应该怎么写」，常读常新。"
+        },
+        {
+          "id": "on-java-8",
+          "title": "On Java 8",
+          "author": "Bruce Eckel",
+          "rating": 4,
+          "status": "在读",
+          "category": "系统",
+          "tags": ["基础", "进阶"],
+          "summary": "Thinking in Java 的现代续作，基础与进阶并重，示例充足。"
+        }
+      ]
+    },
+    {
+      "id": "db",
+      "name": "数据库",
+      "desc": "数据的安身之所：关系模型、索引、事务与缓存",
+      "books": [
+        {
+          "id": "hp-mysql",
+          "title": "高性能 MySQL",
+          "author": "Baron Schwartz 等",
+          "rating": 5,
+          "status": "已读",
+          "category": "进阶",
+          "tags": ["索引", "调优", "复制"],
+          "summary": "MySQL 性能与架构的权威指南，索引、锁、复制、高可用讲得极深，后端案头必备。"
+        },
+        {
+          "id": "redis-design",
+          "title": "Redis 设计与实现",
+          "author": "黄健宏",
+          "rating": 5,
+          "status": "已读",
+          "category": "源码",
+          "tags": ["缓存", "数据结构"],
+          "summary": "从源码层面拆解 Redis 的String、ZSet、持久化与集群，缓存面试与实战利器。"
+        },
+        {
+          "id": "db-concepts",
+          "title": "数据库系统概念",
+          "author": "Abraham Silberschatz 等",
+          "rating": 4,
+          "status": "想读",
+          "category": "经典",
+          "tags": ["理论", "SQL"],
+          "summary": "数据库理论的「帆船书」，体系完整，是建立扎实数据观的根基读物。"
+        }
+      ]
+    },
+    {
+      "id": "arch",
+      "name": "分布式与架构",
+      "desc": "从单机到集群：高可用、可扩展与一致性之道",
+      "books": [
+        {
+          "id": "ddia",
+          "title": "数据密集型应用系统设计",
+          "author": "Martin Kleppmann",
+          "rating": 5,
+          "status": "在读",
+          "category": "经典",
+          "tags": ["分布式", "一致性", "存储"],
+          "summary": "DDIA，后端架构进阶的标杆。把 replication、partitioning、事务与流处理讲得通透，强烈推荐。"
+        },
+        {
+          "id": "fenghuang",
+          "title": "凤凰架构",
+          "author": "周志明",
+          "rating": 5,
+          "status": "已读",
+          "category": "云原生",
+          "tags": ["微服务", "演进"],
+          "summary": "以「演进中的架构」为主线，贯通单体到云原生，理论结合大量可运行代码，中文佳作。"
+        },
+        {
+          "id": "architecture-0",
+          "title": "从 0 开始学架构",
+          "author": "李运华",
+          "rating": 4,
+          "status": "已读",
+          "category": "方法论",
+          "tags": ["实战", "套路"],
+          "summary": "把架构设计拆成可操作的方法论（高性能、高可用、可扩展），落地感强。"
+        }
+      ]
+    },
+    {
+      "id": "engineering",
+      "name": "完整工程",
+      "desc": "工程之大成：微服务、设计原则与团队协作",
+      "books": [
+        {
+          "id": "microservices-patterns",
+          "title": "微服务架构设计模式",
+          "author": "Chris Richardson",
+          "rating": 5,
+          "status": "已读",
+          "category": "微服务",
+          "tags": ["拆分", "通信", "部署"],
+          "summary": "系统梳理微服务的服务拆分、通信、事务与部署模式，落地微服务必读。"
+        },
+        {
+          "id": "clean-code",
+          "title": "代码整洁之道",
+          "author": "Robert C. Martin",
+          "rating": 5,
+          "status": "已读",
+          "category": "编码",
+          "tags": ["命名", "函数", "整洁"],
+          "summary": "「代码感」的启蒙书，命名、函数、注释、错误处理的最佳实践，值得反复翻阅。"
+        },
+        {
+          "id": "refactoring",
+          "title": "重构：改善既有代码的设计",
+          "author": "Martin Fowler",
+          "rating": 4,
+          "status": "在读",
+          "category": "设计",
+          "tags": ["坏味道", "手法"],
+          "summary": "识别代码坏味道并给出安全的重构手法，是维护大型系统的日常功法。"
+        },
+        {
+          "id": "mythical-man-month",
+          "title": "人月神话",
+          "author": "Frederick P. Brooks Jr.",
+          "rating": 4,
+          "status": "想读",
+          "category": "工程",
+          "tags": ["管理", "经典"],
+          "summary": "软件工程管理的经典之作，「向进度落后的项目增加人手只会让它更慢」至今振聋发聩。"
+        }
+      ]
+    }
+  ]
+}
