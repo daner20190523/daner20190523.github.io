@@ -26,6 +26,15 @@
   --font-body:    "Noto Serif SC", "PingFang SC", "KaiTi", "STKaiti", sans-serif;
 }
 
+/* Base（自包含，避免依赖外部 wuxia-common.css 缺失时整页失样式） */
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px; line-height: 1.85;
+  color: var(--ink); background: var(--bg);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+
 /* Nav */
 .nav {
   position: sticky; top: 0; z-index: 100;
