@@ -84,6 +84,83 @@
           "category": "经典",
           "tags": ["严谨", "数学"],
           "summary": "算法领域的「圣经」，证明严谨、覆盖全面，适合作为长期案头参考而非一口气读完。"
+        },
+        {
+          "id": "labuladong的算法小抄",
+          "title": "labuladong的算法小抄",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "面试",
+          "tags": ["算法", "面试"],
+          "summary": ""
+        },
+        {
+          "id": "数据结构与算法分析Java语言描述",
+          "title": "数据结构与算法分析：Java语言描述（原书第3版）",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "教材",
+          "tags": ["算法", "Java"],
+          "summary": ""
+        },
+        {
+          "id": "漫画算法-小灰的算法之旅",
+          "title": "漫画算法-小灰的算法之旅",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "图解",
+          "tags": ["算法", "漫画"],
+          "summary": ""
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "name": "设计模式与建模",
+      "desc": "写出可维护的代码：UML 建模与设计模式的内功",
+      "books": [
+        {
+          "id": "UML大战需求分析",
+          "title": "UML大战需求分析",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "UML",
+          "tags": ["UML", "需求分析"],
+          "summary": ""
+        },
+        {
+          "id": "大话设计模式",
+          "title": "大话设计模式",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "设计模式",
+          "tags": ["设计模式", "入门"],
+          "summary": ""
+        },
+        {
+          "id": "大象-Thinking in UML",
+          "title": "大象：Thinking in UML（第2版）",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "UML",
+          "tags": ["UML", "建模"],
+          "summary": ""
+        },
+        {
+          "id": "彩色UML建模-2008-中文版",
+          "title": "彩色UML建模-2008-中文版",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "UML",
+          "tags": ["UML", "建模"],
+          "summary": ""
         }
       ]
     },
@@ -121,6 +198,16 @@
           "category": "经典",
           "tags": ["分层", "HTTP"],
           "summary": "从应用层往下逐层展开，案例丰富，是理解现代网络栈的首选教材。"
+        },
+        {
+          "id": "操作系统",
+          "title": "操作系统",
+          "author": "罗宇",
+          "rating": 0,
+          "status": "想读",
+          "category": "教材",
+          "tags": ["操作系统", "OS"],
+          "summary": ""
         }
       ]
     },
@@ -158,6 +245,190 @@
           "category": "系统",
           "tags": ["基础", "进阶"],
           "summary": "Thinking in Java 的现代续作，基础与进阶并重，示例充足。"
+        },
+        {
+          "id": "Java虚拟机规范（Java SE 7）",
+          "title": "Java虚拟机规范（Java SE 7）",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "规范",
+          "tags": ["JVM", "规范"],
+          "summary": ""
+        }
+      ]
+    },
+    {
+      "id": "Python",
+      "name": "编程语言 · Python",
+      "desc": "以 Python 为器，贯通脚本、数据科学与算法精进",
+      "books": [
+        {
+          "id": "python",
+          "title": "Python基础教程（第3版）.pdf",
+          "author": "",
+          "rating": 5,
+          "status": "已读",
+          "category": "进阶",
+          "tags": ["python", "基础", "入门"],
+          "summary": "python 工程师必读"
+        },
+        {
+          "id": "Python编程300例——快速构建可执行高质量代码",
+          "title": "Python编程300例——快速构建可执行高质量代码",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "实战",
+          "tags": ["Python", "例题"],
+          "summary": ""
+        },
+        {
+          "id": "程序员数学",
+          "title": "程序员数学：用Python学透线性代数和微积分",
+          "author": "保罗·奥兰德",
+          "rating": 0,
+          "status": "已读",
+          "category": "数学",
+          "tags": ["Python", "线性代数"],
+          "summary": ""
+        },
+        {
+          "id": "高阶Python：代码精进之路",
+          "title": "高阶Python：代码精进之路",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "进阶",
+          "tags": ["Python", "精进"],
+          "summary": ""
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "人工智能 · AI",
+      "desc": "从工具到原理：用 AI 与机器学习为编程赋能",
+      "books": [
+        {
+          "id": "人工智能：现代方法",
+          "title": "人工智能：现代方法",
+          "author": "斯图尔特·罗素；彼得·诺维格",
+          "rating": 0,
+          "status": "想读",
+          "category": "经典",
+          "tags": ["AI", "教材"],
+          "summary": ""
+        },
+        {
+          "id": "机器学习实战基于Scikit-Learn、Keras和TensorFlow ([法] 奥雷利安·杰龙)",
+          "title": "机器学习实战基于Scikit-Learn、Keras和TensorFlow",
+          "author": "原书第3版",
+          "rating": 0,
+          "status": "想读",
+          "category": "实战",
+          "tags": ["机器学习", "Python"],
+          "summary": ""
+        },
+        {
+          "id": "Python3破冰人工智能 从入门到精通",
+          "title": "Python3破冰人工智能 从入门到精通",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "AI入门",
+          "tags": ["Python", "AI"],
+          "summary": ""
+        },
+        {
+          "id": "Python大数据分析算法与实例",
+          "title": "Python大数据分析算法与实例",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "数据分析",
+          "tags": ["Python", "大数据"],
+          "summary": ""
+        },
+        {
+          "id": "计算机视觉算法与应用中文版",
+          "title": "计算机视觉算法与应用中文版",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "CV",
+          "tags": ["计算机视觉", "算法"],
+          "summary": ""
+        },
+        {
+          "id": "3小时吃透DeepSeek智能办公",
+          "title": "3小时吃透DeepSeek智能办公",
+          "author": "刘晓阳赵倚南李婷",
+          "rating": 0,
+          "status": "想读",
+          "category": "AI办公",
+          "tags": ["DeepSeek", "AI"],
+          "summary": ""
+        },
+        {
+          "id": "AI时代生存手册-零基础掌握DeepSeek",
+          "title": "AI时代生存手册：零基础掌握DeepSeek",
+          "author": "秋叶；任泽岩；黄震炜",
+          "rating": 0,
+          "status": "想读",
+          "category": "AI入门",
+          "tags": ["DeepSeek", "入门"],
+          "summary": ""
+        },
+        {
+          "id": "使用-n8n-进行快速产品开发",
+          "title": "使用 n8n 进行快速产品开发",
+          "author": "Jason McFeetors, Tanay Pant",
+          "rating": 0,
+          "status": "想读",
+          "category": "自动化",
+          "tags": ["n8n", "工作流"],
+          "summary": ""
+        },
+        {
+          "id": "秒懂AI写作-让你轻松成为写作高手",
+          "title": "秒懂AI写作 让你轻松成为写作高手",
+          "author": "秋叶,刘进新,贾凝墨,万静",
+          "rating": 0,
+          "status": "想读",
+          "category": "AI写作",
+          "tags": ["AI", "写作"],
+          "summary": ""
+        },
+        {
+          "id": "秒懂AI小红书-7招玩转素人博主变现",
+          "title": "秒懂AI小红书：7招玩转素人博主变现",
+          "author": "有姜姜；李婷儿；王生龙",
+          "rating": 0,
+          "status": "想读",
+          "category": "AI运营",
+          "tags": ["AI", "小红书"],
+          "summary": ""
+        },
+        {
+          "id": "秒懂AI提问-让人工智能成为你的效率神器-高清扫描版-",
+          "title": "秒懂AI提问：让人工智能成为你的效率神器[高清扫描版]",
+          "author": "秋叶",
+          "rating": 0,
+          "status": "想读",
+          "category": "AI提示",
+          "tags": ["AI", "Prompt"],
+          "summary": ""
+        },
+        {
+          "id": "秒懂AI编程零基础搞定办公自动化",
+          "title": "秒懂AI编程零基础搞定办公自动化",
+          "author": "蔡逸雯、陈明 编著",
+          "rating": 0,
+          "status": "想读",
+          "category": "AI编程",
+          "tags": ["AI", "编程"],
+          "summary": ""
         }
       ]
     },
@@ -232,6 +503,156 @@
           "category": "方法论",
           "tags": ["实战", "套路"],
           "summary": "把架构设计拆成可操作的方法论（高性能、高可用、可扩展），落地感强。"
+        },
+        {
+          "id": "企业IT架构转型之道--阿里巴巴中台战略思想与架构实战",
+          "title": "企业IT架构转型之道  阿里巴巴中台战略思想与架构实战",
+          "author": "钟华",
+          "rating": 0,
+          "status": "想读",
+          "category": "中台",
+          "tags": ["中台", "架构"],
+          "summary": ""
+        },
+        {
+          "id": "Zookeeper分布式过程",
+          "title": "Zookeeper分布式过程",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "分布式",
+          "tags": ["Zookeeper", "一致性"],
+          "summary": ""
+        },
+        {
+          "id": "Docker — 从入门到实践（v1.2.0）",
+          "title": "Docker — 从入门到实践（v1.2.0）",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "容器",
+          "tags": ["Docker", "容器"],
+          "summary": ""
+        },
+        {
+          "id": "JavaEE开发的颠覆者 Spring Boot实战",
+          "title": "JavaEE开发的颠覆者 Spring Boot实战",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "Spring",
+          "tags": ["Spring Boot", "JavaEE"],
+          "summary": ""
+        },
+        {
+          "id": "Netty, Redis, Zookeeper 高并发实践",
+          "title": "Netty, Redis, Zookeeper 高并发实践",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "高并发",
+          "tags": ["Netty", "高并发"],
+          "summary": ""
+        },
+        {
+          "id": "Redis深度历险：核心原理和应用实践",
+          "title": "Redis深度历险：核心原理和应用实践",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "缓存",
+          "tags": ["Redis", "缓存"],
+          "summary": ""
+        },
+        {
+          "id": "Spring Boot揭秘 快速构建微服务体系",
+          "title": "Spring Boot揭秘 快速构建微服务体系",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "Spring",
+          "tags": ["Spring Boot", "微服务"],
+          "summary": ""
+        },
+        {
+          "id": "Spring Cloud与Docker微服务架构实战",
+          "title": "Spring Cloud与Docker微服务架构实战",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "微服务",
+          "tags": ["Spring Cloud", "Docker"],
+          "summary": ""
+        },
+        {
+          "id": "Spring源码深度解析",
+          "title": "Spring源码深度解析（第2版）",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "源码",
+          "tags": ["Spring", "源码"],
+          "summary": ""
+        },
+        {
+          "id": "Spring.Batch批处理框架",
+          "title": "Spring.Batch批处理框架",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "批处理",
+          "tags": ["Spring Batch"],
+          "summary": ""
+        },
+        {
+          "id": "亿级流量Java高并发与网络编程实战",
+          "title": "亿级流量Java高并发与网络编程实战",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "高并发",
+          "tags": ["高并发", "网络编程"],
+          "summary": ""
+        },
+        {
+          "id": "从Paxos到Zookeeper 分布式一致性原理与实践",
+          "title": "从Paxos到Zookeeper 分布式一致性原理与实践",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "分布式",
+          "tags": ["Paxos", "一致性"],
+          "summary": ""
+        },
+        {
+          "id": "深入浅出Node.js",
+          "title": "深入浅出Node.js",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "Node.js",
+          "tags": ["Node.js", "前端"],
+          "summary": ""
+        },
+        {
+          "id": "重新定义Spring Cloud实战",
+          "title": "重新定义Spring Cloud实战",
+          "author": "",
+          "rating": 0,
+          "status": "已读",
+          "category": "微服务",
+          "tags": ["Spring Cloud"],
+          "summary": ""
+        },
+        {
+          "id": "Java微服务架构实战：SpringBoot+SpringCloud+Docker+RabbitMQ",
+          "title": "Java微服务架构实战：SpringBoot+SpringCloud+Docker+RabbitMQ",
+          "author": "李兴华",
+          "rating": 0,
+          "status": "想读",
+          "category": "微服务",
+          "tags": ["Java", "微服务"],
+          "summary": ""
         }
       ]
     },
