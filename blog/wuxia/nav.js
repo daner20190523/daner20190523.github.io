@@ -28,15 +28,14 @@
 
   // ===== 导航项（单一来源，新增页面只需改这里）=====
   var LINKS = [
-    { t: '关于',   u: '../index.html#about' },
-    { t: '技艺',   u: '../index.html#skills' },
-    { t: '图录',   u: '../index.html#gallery' },
+    { t: '首页',   u: '../index.html' },
     { t: '文章',   u: 'articles.html' },
+    { t: '兵器谱', u: 'bingqipu.html' },
+    { t: '藏书阁', u: 'books.html' },
     { t: '读书笔记', u: 'reading-notes.html' },
     { t: '摄影',   u: 'photography.html' },
-    { t: '藏书阁', u: 'books.html' },
-    { t: '兵器谱', u: 'bingqipu.html' },
-    { t: '联系',   u: '../index.html#contact' }
+    { t: '图录',   u: 'gallery.html' },
+    { t: '关于',   u: '../about.html' },
   ];
 
   var path = location.pathname.split('/').pop(); // 当前文件名，如 bingqipu.html

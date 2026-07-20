@@ -40,11 +40,12 @@
     '<div class="footer-full"><div class="footer-left">' +
       '<span class="refs-label">书山导航</span>' +
       '<ul class="refs">' +
-        '<li><a href="../index.html">← 返回江湖</a></li>' +
+        '<li><a href="../index.html">← 返回江湖（首页）</a></li>' +
+        '<li><a href="../about.html">关于笔者</a></li>' +
         '<li><a href="reading-notes.html">读书笔记</a></li>' +
         '<li><a href="books.html">藏书阁</a></li>' +
         '<li><a href="articles.html">全部文章</a></li>' +
-        '<li><a href="../index.html#gallery">武林图录</a></li>' +
+        '<li><a href="gallery.html">武林图录</a></li>' +
       '</ul>' +
       '<div class="sig-line"></div>' +
       '<div class="sig-name">daner技术栈</div>' +
