@@ -45,7 +45,7 @@
   }
 
   var html = '<nav class="nav"><div class="nav-inner">'
-    + '<a href="../index.html" class="nav-logo">张单单 · 技术江湖</a>'
+    + '<a href="../index.html" class="nav-logo">张单单 · 江湖</a>'
     + '<ul class="nav-links">';
   LINKS.forEach(function (l) {
     html += '<li><a href="' + l.u + '"'
