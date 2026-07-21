@@ -1,7 +1,8 @@
 /*
- * 公共导航模板 — 所有 wuxia 子页面统一引用
- * 用法：在 <body> 开头放 <div id="siteNav"></div><script src="nav.js"></script>
- * 样式自包含（字面量，不依赖页面 :root 变量），当前页根据 URL 自动高亮。
+ * 公共导航模板 — 全站统一引用（wuxia 子页与 blog 根目录页均可用）
+ * 用法：在 <body> 开头放 <div id="siteNav"></div><script src="wuxia/nav.js"></script>
+ * 样式自包含（字面量，单处维护），并根据当前页面所在目录自动适配链接前缀，
+ * 当前页根据 URL 自动高亮。
  */
 (function () {
   // ===== 自包含样式（字面量，单处维护，不依赖页面变量）=====
@@ -26,26 +27,35 @@
   st.textContent = CSS;
   document.head.appendChild(st);
 
+  // ===== 位置自适应：根据当前页面所在目录决定链接前缀 =====
+  var parts  = location.pathname.split('/').filter(Boolean);
+  var last   = parts[parts.length - 1] || 'index.html';
+  var parent = parts.length >= 2 ? parts[parts.length - 2] : '';
+  var inWuxia = (parent === 'wuxia');
+
+  var P   = inWuxia ? '' : 'wuxia/';                 // 子页面路径前缀
+  var idx = inWuxia ? '../index.html' : 'index.html';
+  var abt = inWuxia ? '../about.html' : 'about.html';
+
   // ===== 导航项（单一来源，新增页面只需改这里）=====
   var LINKS = [
-    { t: '首页',   u: '../index.html' },
-    { t: '文章',   u: 'articles.html' },
-    { t: '兵器谱', u: 'bingqipu.html' },
-    { t: '藏书阁', u: 'books.html' },
-    { t: '读书笔记', u: 'reading-notes.html' },
-    { t: '摄影',   u: 'photography.html' },
-    { t: '图录',   u: 'gallery.html' },
-    { t: '关于',   u: '../about.html' },
+    { t: '首页',   u: idx },
+    { t: '文章',   u: P + 'articles.html' },
+    { t: '兵器谱', u: inWuxia ? 'bingqipu.html' : 'wuxia/bingqipu.html' },
+    { t: '藏书阁', u: P + 'books.html' },
+    { t: '读书笔记', u: P + 'reading-notes.html' },
+    { t: '摄影',   u: P + 'photography.html' },
+    { t: '图录',   u: P + 'gallery.html' },
+    { t: '关于',   u: abt },
   ];
 
-  var path = location.pathname.split('/').pop(); // 当前文件名，如 bingqipu.html
   function isActive(u) {
-    if (u.indexOf('index.html') >= 0) return path === 'index.html';
-    return u === path;
+    if (u === idx) return last === 'index.html';
+    return u.split('/').pop() === last;
   }
 
   var html = '<nav class="nav"><div class="nav-inner">'
-    + '<a href="../index.html" class="nav-logo">张单单 · 江湖</a>'
+    + '<a href="' + idx + '" class="nav-logo">张单单 · 江湖</a>'
     + '<ul class="nav-links">';
   LINKS.forEach(function (l) {
     html += '<li><a href="' + l.u + '"'
