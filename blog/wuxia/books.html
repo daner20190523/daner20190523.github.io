@@ -93,12 +93,13 @@ body {
   color: var(--accent); opacity: 0.25; font-size: 20px; letter-spacing: 16px; user-select: none;
 }
 
-/* Filter bar */
+/* Filter bars */
 .filter-bar {
   max-width: var(--content-w); margin: 0 auto;
-  padding: 8px 40px 24px;
+  padding: 10px 40px 18px;
   display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
 }
+.filter-bar + .filter-bar { padding-top: 0; }
 .filter-btn {
   font-family: var(--font-body);
   font-size: 13px; font-weight: 600; letter-spacing: 1px;
@@ -112,15 +113,34 @@ body {
 }
 .filter-count { font-size: 12px; color: var(--muted); margin-left: auto; letter-spacing: 1px; }
 
-/* Book grid */
+/* Books wrap & category sections */
+.books-wrap {
+  max-width: var(--content-w); margin: 0 auto;
+  padding: 8px 40px 64px;
+}
+.book-section { margin-bottom: 48px; }
+.section-head {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 18px; padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.section-title {
+  position: relative; padding-left: 14px;
+  font-family: var(--font-heading); font-size: 22px; font-weight: 700;
+  color: var(--ink); letter-spacing: 1px;
+}
+.section-title::before {
+  content: ""; position: absolute; left: 0; top: 5px; bottom: 5px;
+  width: 4px; border-radius: 2px; background: var(--accent);
+}
+.section-count { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
 .book-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  max-width: var(--content-w);
-  margin: 0 auto;
-  padding: 8px 40px 64px;
 }
+.books-empty { text-align: center; color: var(--muted); padding: 60px 0; }
+
 .book-card {
   position: relative;
   display: flex; gap: 16px;
@@ -172,11 +192,6 @@ body {
   font-size: 11px; color: var(--ink-light);
   background: var(--warm-gray); border: 1px solid var(--border);
   border-radius: 4px; padding: 1px 7px; letter-spacing: 0.5px;
-}
-.book-cat {
-  position: absolute; top: -1px; right: -1px;
-  font-size: 10px; letter-spacing: 1px; color: #fff;
-  background: var(--accent-dark); padding: 3px 10px; border-radius: 0 10px 0 10px;
 }
 
 /* Detail panel */
@@ -247,12 +262,14 @@ body {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .book-grid { grid-template-columns: repeat(2, 1fr); padding: 8px 24px 56px; }
+  .book-grid { grid-template-columns: repeat(2, 1fr); }
+  .books-wrap { padding: 8px 24px 56px; }
   .page-hd { padding: 40px 24px 28px; }
-  .filter-bar { padding: 8px 24px 20px; }
+  .filter-bar { padding: 10px 24px 16px; }
 }
 @media (max-width: 480px) {
-  .book-grid { grid-template-columns: 1fr; padding: 8px 16px 48px; }
+  .book-grid { grid-template-columns: 1fr; }
+  .books-wrap { padding: 8px 16px 48px; }
   .nav-links { gap: 12px; font-size: 11px; }
   .footer { padding: 40px 24px; grid-template-columns: 1fr; }
 }
@@ -272,16 +289,20 @@ body {
 
 <div class="wuxia-divider">◆ ◇ ◆ ◇ ◆</div>
 
-<div class="filter-bar" id="filterBar">
-  <button class="filter-btn active" data-filter="all">全部</button>
-  <button class="filter-btn" data-filter="已读">已读</button>
-  <button class="filter-btn" data-filter="在读">在读</button>
-  <button class="filter-btn" data-filter="想读">想读</button>
+<!-- 分类筛选（由 JS 动态生成） -->
+<div class="filter-bar" id="catBar"></div>
+
+<!-- 状态筛选 -->
+<div class="filter-bar" id="statusBar">
+  <button class="filter-btn active" data-status="all">全部</button>
+  <button class="filter-btn" data-status="已读">已读</button>
+  <button class="filter-btn" data-status="在读">在读</button>
+  <button class="filter-btn" data-status="想读">想读</button>
   <span class="filter-count" id="filterCount"></span>
 </div>
 
-<main class="book-grid" id="bookGrid">
-  <!-- 由 JS 动态加载 books-data/books.json -->
+<main class="books-wrap" id="bookWrap">
+  <!-- 由 JS 按分类分组陈列 books-data/books.json -->
 </main>
 
 <div class="wuxia-divider">◆ ◇ ◆ ◇ ◆</div>
@@ -293,21 +314,34 @@ body {
 
 <script>
 (async () => {
-  const grid   = document.getElementById('bookGrid');
-  const bar    = document.getElementById('filterBar');
-  const countEl= document.getElementById('filterCount');
-  const mask   = document.getElementById('detailMask');
-  const panel  = document.getElementById('detailPanel');
+  const wrap      = document.getElementById('bookWrap');
+  const catBar    = document.getElementById('catBar');
+  const statusBar = document.getElementById('statusBar');
+  const countEl   = document.getElementById('filterCount');
+  const mask      = document.getElementById('detailMask');
+  const panel     = document.getElementById('detailPanel');
   const esc = (s) => String(s == null ? '' : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
+  // 技术优先的分类展示顺序；未列出的按出现顺序追加到末尾
+  const ORDER = ['架构/分布式','Java/JVM','编程','算法','设计/建模','AI',
+                 '理财/投资','自我提升','心理/成长','社科/科学','思想/随笔',
+                 '文学/小说','其他','未分类'];
+
   let BOOKS = [];
-  let curFilter = 'all';
+  let curCat = 'all';
+  let curStatus = 'all';
+
+  // 归一化分类：空 -> 未分类；心理/疗愈 并入 心理/成长
+  function normCat(c) {
+    if (!c || !String(c).trim()) return '未分类';
+    if (c === '心理/疗愈') return '心理/成长';
+    return c;
+  }
+  function catKey(c) { const i = ORDER.indexOf(c); return i === -1 ? ORDER.length : i; }
 
   function stars(rating) {
     let h = '';
-    for (let i = 1; i <= 5; i++) {
-      h += i <= rating ? '★' : '<span class="star-off">★</span>';
-    }
+    for (let i = 1; i <= 5; i++) h += i <= rating ? '★' : '<span class="star-off">★</span>';
     return h;
   }
   function statusClass(s) {
@@ -319,33 +353,47 @@ body {
     if (b.cover) return '<img src="' + esc(b.cover) + '" alt="' + esc(b.title) + '">';
     return esc(b.title);
   }
-
-  function render() {
-    const list = BOOKS.filter(b => curFilter === 'all' || b.status === curFilter);
-    countEl.textContent = '共 ' + list.length + ' 册';
-    if (list.length === 0) {
-      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0;">此架暂无藏书</p>';
-      return;
-    }
-    let html = '';
-    for (const b of list) {
-      const tags = (b.tags || []).map(t => '<span class="book-tag">' + esc(t) + '</span>').join('');
-      html +=
-        '<div class="book-card" data-id="' + esc(b.id) + '">' +
-          '<span class="book-cat">' + esc(b.category || '') + '</span>' +
-          '<div class="book-cover">' + coverHTML(b) + '</div>' +
-          '<div class="book-body">' +
-            '<div class="book-title">' + esc(b.title) + '</div>' +
-            '<div class="book-author">' + esc(b.author || '') + '</div>' +
-            '<div class="book-meta">' +
-              '<span class="book-rating">' + stars(b.rating || 0) + '</span>' +
-              '<span class="book-status ' + statusClass(b.status) + '">' + esc(b.status) + '</span>' +
-            '</div>' +
-            '<div class="book-tags">' + tags + '</div>' +
+  function cardHTML(b) {
+    const tags = (b.tags || []).map(t => '<span class="book-tag">' + esc(t) + '</span>').join('');
+    return '<div class="book-card" data-id="' + esc(b.id) + '">' +
+        '<div class="book-cover">' + coverHTML(b) + '</div>' +
+        '<div class="book-body">' +
+          '<div class="book-title">' + esc(b.title) + '</div>' +
+          '<div class="book-author">' + esc(b.author || '') + '</div>' +
+          '<div class="book-meta">' +
+            '<span class="book-rating">' + stars(b.rating || 0) + '</span>' +
+            '<span class="book-status ' + statusClass(b.status) + '">' + esc(b.status) + '</span>' +
           '</div>' +
-        '</div>';
+          '<div class="book-tags">' + tags + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function allCats() {
+    const set = new Set();
+    BOOKS.forEach(b => set.add(normCat(b.category)));
+    return [...set].sort((a, b) => catKey(a) - catKey(b));
+  }
+
+  // 按分类分组渲染；分类 tab / 状态筛选 均生效
+  function render() {
+    const cats = allCats().filter(c => curCat === 'all' || c === curCat);
+    let total = 0, html = '';
+    for (const cat of cats) {
+      const list = BOOKS.filter(b =>
+        normCat(b.category) === cat && (curStatus === 'all' || b.status === curStatus));
+      if (!list.length) continue;
+      total += list.length;
+      html += '<section class="book-section">' +
+          '<div class="section-head">' +
+            '<h2 class="section-title">' + esc(cat) + '</h2>' +
+            '<span class="section-count">' + list.length + ' 册</span>' +
+          '</div>' +
+          '<div class="book-grid">' + list.map(cardHTML).join('') + '</div>' +
+        '</section>';
     }
-    grid.innerHTML = html;
+    wrap.innerHTML = total ? html : '<p class="books-empty">此条件下暂无藏书</p>';
+    countEl.textContent = '共 ' + total + ' 册';
   }
 
   function openDetail(b) {
@@ -360,7 +408,7 @@ body {
       '<div class="d-row">' +
         '<span class="book-rating">' + stars(b.rating || 0) + '</span>' +
         '<span class="book-status ' + statusClass(b.status) + '">' + esc(b.status) + '</span>' +
-        '<span class="book-tag">' + esc(b.category || '') + '</span>' +
+        '<span class="book-tag">' + esc(normCat(b.category)) + '</span>' +
       '</div>' +
       (b.summary ? '<div class="d-summary">' + esc(b.summary) + '</div>' : '') +
       (tags ? '<div class="book-tags" style="margin-bottom:20px;">' + tags + '</div>' : '') +
@@ -370,18 +418,33 @@ body {
   }
   function closeDetail() { mask.classList.remove('open'); }
 
+  // 生成分类 tab
+  function buildCatBar() {
+    const cats = allCats();
+    let h = '<button class="filter-btn active" data-cat="all">全部</button>';
+    cats.forEach(c => h += '<button class="filter-btn" data-cat="' + esc(c) + '">' + esc(c) + '</button>');
+    catBar.innerHTML = h;
+  }
+
   // 事件
-  grid.addEventListener('click', (e) => {
+  wrap.addEventListener('click', (e) => {
     const card = e.target.closest('.book-card');
     if (!card) return;
     const b = BOOKS.find(x => x.id === card.dataset.id);
     if (b) openDetail(b);
   });
-  bar.addEventListener('click', (e) => {
+  catBar.addEventListener('click', (e) => {
     const btn = e.target.closest('.filter-btn');
     if (!btn) return;
-    curFilter = btn.dataset.filter;
-    bar.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('active', x === btn));
+    curCat = btn.dataset.cat;
+    catBar.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('active', x === btn));
+    render();
+  });
+  statusBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    curStatus = btn.dataset.status;
+    statusBar.querySelectorAll('.filter-btn').forEach(x => x.classList.toggle('active', x === btn));
     render();
   });
   mask.addEventListener('click', (e) => { if (e.target === mask) closeDetail(); });
@@ -393,9 +456,10 @@ body {
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
     BOOKS = data.books || [];
+    buildCatBar();
     render();
   } catch (err) {
-    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0;">藏书加载失败，请通过本地服务器（如 python -m http.server）访问本页，file:// 下浏览器会拦截 fetch。</p>';
+    wrap.innerHTML = '<p class="books-empty">藏书加载失败，请通过本地服务器（如 python -m http.server）访问本页，file:// 下浏览器会拦截 fetch。</p>';
     console.error('books.json fetch failed:', err);
   }
 })();
